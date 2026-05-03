@@ -1,0 +1,6 @@
+# Everything except site/ and the bare metadata files needed for the COPY.
+*
+!site/
+!.dockerignore
+
+# (No README or LICENSE inside the image — it's just a static-site server.)
