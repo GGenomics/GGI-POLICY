@@ -1,12 +1,71 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Bootstrap for AI agents working in this repository. Read this file first.
+For full detail see [POL-META-AI-AGENT-CONTRACT](policies/meta/ai-agent-contract.md).
 
-## Repository status
+## What this repo is
 
-This repository is in a pre-implementation state. As of the last update to this file, it contains only a README and no source code, build system, tests, or tooling.
+A policy library for GGenomics covering data and application governance and
+cybersecurity. Every policy is authored against the framework defined by
+[POL-META-DOC-FRAMEWORK](policies/meta/doc-framework.md). Agents that read,
+cite, validate, or generate against this library follow the AI-agent contract.
 
-When work begins, expand this file with:
-- Common commands (build, lint, test, run a single test)
-- High-level architecture that spans multiple files
-- Any project-specific conventions not obvious from the code
+## Authoritative read order
+
+1. **This file** — bootstrap pointers (you are here)
+2. [`schemas/`](schemas/) — JSON Schemas for frontmatter, rules, exceptions,
+   role-team-mapping, and the framework controls catalog
+3. [`schemas/framework-controls.json`](schemas/framework-controls.json) —
+   canonical control IDs for NIST CSF 2.0, CIS Controls v8, SOC 2 TSC,
+   HIPAA 45 CFR Part 164, NIST 800-53 Rev 5, NIST 800-171 Rev 3
+4. [`glossary/terms.md`](glossary/terms.md) — controlled domain vocabulary
+5. [`policies/meta/doc-framework.md`](policies/meta/doc-framework.md) — the
+   framework, written as a policy
+6. [`policies/meta/ai-agent-contract.md`](policies/meta/ai-agent-contract.md) —
+   this contract, full detail
+7. [`policies/`](policies/) — domain-organized policies; `*.rules.yaml`
+   sidecars carry machine-checkable rules
+8. [`exceptions/`](exceptions/) — overrides; check before declaring a
+   violation
+
+## Enforceability rule
+
+A rule is enforceable IF AND ONLY IF:
+
+1. Parent policy has `status: effective`, AND
+2. Parent policy's `effective_date <= today`, AND
+3. No active exception (`status: active` AND `expires >= today`) cites the
+   rule's full sub-id.
+
+Use the helpers — do not re-implement the predicate:
+
+```python
+from ggi_policy.validate.runner import run
+from ggi_policy.repo import repo_root
+report = run(repo_root=repo_root())
+# report.findings is a list of ValidationFinding(code, path, message, locator)
+```
+
+## Citation format
+
+Every machine-decidable finding includes a square-bracketed sub-id anchor:
+
+```
+[POL-IAM-GROUP-NAMING.R1] <explanation>
+Severity: required. Policy v1.0.0, effective 2026-06-01.
+```
+
+## Hard prohibitions
+
+- Never fabricate rule IDs or framework tags.
+- Never enforce a rule from a non-`effective` policy.
+- Never silently elide an active exception.
+- Never edit `policies/`, `schemas/`, `exceptions/`, or `crosswalks/` outside
+  the PR workflow.
+
+## Quick links
+
+- Design doc:
+  [`docs/superpowers/specs/2026-05-02-policy-doc-framework-design.md`](docs/superpowers/specs/2026-05-02-policy-doc-framework-design.md)
+- Templates: [`templates/`](templates/) (copy when authoring new artifacts)
+- CLI: `uv run ggi-policy {validate,fetch-controls,build-crosswalks,build-site,validate-deploy,check-reviews,notify-effective,check-exceptions}`
