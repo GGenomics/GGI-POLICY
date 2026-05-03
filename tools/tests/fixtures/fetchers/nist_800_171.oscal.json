@@ -1,0 +1,30 @@
+{
+  "catalog": {
+    "uuid": "800-171-test-fixture",
+    "metadata": {
+      "title": "NIST Special Publication 800-171 Revision 3",
+      "version": "3.0.0",
+      "oscal-version": "1.1.2"
+    },
+    "groups": [
+      {
+        "id": "3.1",
+        "class": "family",
+        "title": "Access Control",
+        "controls": [
+          { "id": "3.1.1", "class": "SP800-171", "title": "Account Management" },
+          { "id": "3.1.2", "class": "SP800-171", "title": "Access Enforcement" },
+          { "id": "3.1.5", "class": "SP800-171", "title": "Least Privilege" }
+        ]
+      },
+      {
+        "id": "3.13",
+        "class": "family",
+        "title": "System and Communications Protection",
+        "controls": [
+          { "id": "3.13.11", "class": "SP800-171", "title": "Cryptographic Protection" }
+        ]
+      }
+    ]
+  }
+}
