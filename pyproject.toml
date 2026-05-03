@@ -1,0 +1,36 @@
+[project]
+name = "ggi-policy"
+version = "0.1.0"
+description = "GGI policy documentation framework — validation, crosswalks, and site tooling."
+requires-python = ">=3.12"
+authors = [{ name = "GGenomics IT" }]
+dependencies = [
+  "click>=8.1",
+  "jsonschema>=4.21",
+  "python-frontmatter>=1.1",
+  "PyYAML>=6.0",
+]
+
+[project.scripts]
+ggi-policy = "ggi_policy.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tools/ggi_policy"]
+
+[tool.hatch.build.targets.wheel.sources]
+"tools/ggi_policy" = "ggi_policy"
+
+[tool.pytest.ini_options]
+testpaths = ["tools/tests"]
+pythonpath = ["tools"]
+addopts = "-q"
