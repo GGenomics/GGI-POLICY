@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: policy-docs
+  namespace: policy-docs
+  labels:
+    app.kubernetes.io/name: policy-docs
+    app.kubernetes.io/part-of: ggi-policy
+  annotations:
+    # cert-manager will provision a TLS cert from the named ClusterIssuer.
+    # TODO(operator): confirm internal-ca is the right ClusterIssuer name in
+    # your cluster (mirror what airflow uses).
+    cert-manager.io/cluster-issuer: internal-ca
+
+    # ingress-nginx auth chain: route every request through oauth2-proxy
+    # before reaching the policy-docs service.
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    # Forward identity headers from oauth2-proxy to the upstream (informational
+    # only; the static site doesn't read them, but downstream debug pages may).
+    nginx.ingress.kubernetes.io/auth-response-headers: "x-auth-request-user, x-auth-request-email"
+    nginx.ingress.kubernetes.io/auth-snippet: |
+      auth_request_set $auth_user $upstream_http_x_auth_request_user;
+      auth_request_set $auth_email $upstream_http_x_auth_request_email;
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - policy.ggenomics.internal
+      secretName: policy-docs-tls
+  rules:
+    - host: policy.ggenomics.internal
+      http:
+        paths:
+          # The /oauth2/* paths are served by oauth2-proxy.
+          - path: /oauth2
+            pathType: Prefix
+            backend:
+              service:
+                name: oauth2-proxy
+                port:
+                  number: 80
+          # Everything else is the static site.
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: policy-docs
+                port:
+                  number: 80
