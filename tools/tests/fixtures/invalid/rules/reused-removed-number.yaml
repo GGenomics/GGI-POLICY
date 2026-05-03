@@ -1,0 +1,4 @@
+policy_id: POL-IAM-TEST
+rules:
+  - { id: R1, statement: "old removed rule", type: flag, severity: required, status: removed, removed_in: 1.1.0 }
+  - { id: R1, statement: "new live rule",    type: flag, severity: required }
