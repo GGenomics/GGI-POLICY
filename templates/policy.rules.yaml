@@ -1,0 +1,17 @@
+policy_id: POL-{DOMAIN}-{SLUG}
+rules:
+  - id: R1
+    statement: <normative statement>
+    type: flag                     # flag | setting | pattern | decision_table | allowed_values | forbidden_values
+    severity: required             # required | recommended
+    applies_to:
+      object_type: <e.g., entra_security_group>
+    # type-specific fields:
+    # pattern: "<regex>"           # for type: pattern
+    # inputs: [...]                # for type: decision_table
+    # rows: [...]
+    # allowed: [...]               # for type: allowed_values
+    # forbidden: [...]             # for type: forbidden_values
+    examples:
+      compliant: []
+      non_compliant: []
