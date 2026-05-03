@@ -1,0 +1,80 @@
+{
+  "structure": {
+    "type": "title",
+    "identifier": "45",
+    "label": "Title 45",
+    "children": [
+      {
+        "type": "subtitle",
+        "identifier": "A",
+        "label": "Subtitle A",
+        "children": [
+          {
+            "type": "subchapter",
+            "identifier": "C",
+            "label": "Subchapter C — Administrative Data Standards and Related Requirements",
+            "children": [
+              {
+                "type": "part",
+                "identifier": "164",
+                "label": "Part 164 — Security and Privacy",
+                "children": [
+                  {
+                    "type": "subpart",
+                    "identifier": "C",
+                    "label": "Subpart C — Security Standards for the Protection of Electronic Protected Health Information",
+                    "children": [
+                      {
+                        "type": "section",
+                        "identifier": "164.308",
+                        "label": "Administrative safeguards",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "identifier": "164.308(a)",
+                            "label": "Standards"
+                          },
+                          {
+                            "type": "paragraph",
+                            "identifier": "164.308(a)(1)",
+                            "label": "Security management process"
+                          },
+                          {
+                            "type": "paragraph",
+                            "identifier": "164.308(a)(4)",
+                            "label": "Information access management"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "section",
+                        "identifier": "164.312",
+                        "label": "Technical safeguards",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "identifier": "164.312(a)(1)",
+                            "label": "Access control"
+                          },
+                          {
+                            "type": "paragraph",
+                            "identifier": "164.312(a)(2)(i)",
+                            "label": "Unique user identification"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "title": "Title 45",
+    "date": "2026-04-15"
+  }
+}
