@@ -90,4 +90,30 @@ def test_save_sorts_controls_by_id_within_framework(tmp_path: Path) -> None:
     controls.save({"cis": fd}, target)
     loaded = controls.load(target)
     ids = [c["id"] for c in loaded["frameworks"]["cis"]["controls"]]
+    # Natural sort: 5.4 < 6.1 < 6.10 (numeric components compared as ints).
     assert ids == ["5.4", "6.1", "6.10"]
+
+
+def test_save_natural_sort_orders_ac_2_before_ac_10(tmp_path: Path) -> None:
+    """800-53-style IDs: lexicographic puts AC-10 before AC-2; natural sort fixes."""
+    from datetime import date
+
+    from ggi_policy.fetchers._models import Control, FrameworkData, Metadata
+
+    fd = FrameworkData(
+        metadata=Metadata(
+            version="5", fetched_at=date(2026, 5, 2),
+            source_url="https://x", fetcher="nist_800_53",
+        ),
+        controls=[
+            Control(id="AC-10", title="z"),
+            Control(id="AC-2", title="a"),
+            Control(id="AC-2(1)", title="b"),
+            Control(id="AC-1", title="c"),
+        ],
+    )
+    target = tmp_path / "fc.json"
+    controls.save({"nist_800_53": fd}, target)
+    loaded = controls.load(target)
+    ids = [c["id"] for c in loaded["frameworks"]["nist_800_53"]["controls"]]
+    assert ids == ["AC-1", "AC-2", "AC-2(1)", "AC-10"]

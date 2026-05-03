@@ -25,6 +25,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
+          # Self-bootstrap the label so first-run after merge doesn't fail.
+          # --force updates existing labels' color/description; idempotent.
+          gh label create review-due --color D93F0B \
+            --description "Policy review past its review_cycle" --force 2>/dev/null || true
+
           if [[ ! -s overdue.tsv ]] || ! grep -q '^OVERDUE' overdue.tsv; then
             echo "no overdue reviews"
             exit 0
@@ -39,7 +45,7 @@ jobs:
             gh issue create \
               --title "$title" \
               --body "$body" \
-              --label "review-due"
+              --label "review-due" || echo "failed to create issue: $title"
           done < overdue.tsv
 
   notify-effective:

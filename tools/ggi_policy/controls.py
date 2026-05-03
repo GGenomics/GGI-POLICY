@@ -1,12 +1,25 @@
 """Read/write the canonical framework-controls catalog."""
 
 import json
+import re
 from functools import cache
 from pathlib import Path
 
 from jsonschema import Draft202012Validator, FormatChecker
 
 from ggi_policy.fetchers._models import FrameworkData
+
+
+_DIGIT_RUN = re.compile(r"(\d+)")
+
+
+def _natural_key(cid: str) -> tuple:
+    """Natural-sort key: split on digit runs and compare numerics as ints.
+
+    Lexicographic sort places `AC-10` before `AC-2`; natural sort places
+    `AC-2` before `AC-10`. Same for CIS where '13' otherwise sorts before '2'.
+    """
+    return tuple(int(p) if p.isdigit() else p for p in _DIGIT_RUN.split(cid))
 
 
 @cache
@@ -32,7 +45,9 @@ def save(per_framework: dict[str, FrameworkData], path: Path) -> None:
     out_frameworks: dict[str, dict] = {}
     for name, fd in per_framework.items():
         framework_json = fd.to_json()
-        framework_json["controls"] = sorted(framework_json["controls"], key=lambda c: c["id"])
+        framework_json["controls"] = sorted(
+            framework_json["controls"], key=lambda c: _natural_key(c["id"])
+        )
         out_frameworks[name] = framework_json
     payload = {"frameworks": out_frameworks}
     path.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n")

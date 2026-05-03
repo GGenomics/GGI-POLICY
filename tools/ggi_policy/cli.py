@@ -233,6 +233,7 @@ def notify_effective(today_opt, dry_run: bool, repo_root_opt: Path | None,
         click.echo("skipped: TEAMS_POLICY_WEBHOOK not set", err=True)
         return
 
+    failures = 0
     for entry in arriving:
         title = f"Policy now effective: {entry['id']}"
         body = (
@@ -241,9 +242,18 @@ def notify_effective(today_opt, dry_run: bool, repo_root_opt: Path | None,
         )
         if dry_run:
             click.echo(f"[dry-run] would post: {title} | {body}")
-        else:
+            continue
+        try:
             teams.post_card(webhook_url_opt, title=title, body=body)
             click.echo(f"posted: {title}")
+        except Exception as e:  # network blip, 5xx, etc.
+            failures += 1
+            click.echo(f"failed-to-post: {entry['id']}: {e}", err=True)
+    # Best-effort: only fail if EVERY post failed (signals a config bug,
+    # not a transient outage). At-most-once delivery semantics are
+    # acceptable for these notifications.
+    if failures and failures == len(arriving):
+        sys.exit(1)
 
 
 @main.command("check-exceptions")
@@ -274,6 +284,7 @@ def check_exceptions(today_opt, dry_run: bool, repo_root_opt: Path | None,
         click.echo("skipped: TEAMS_POLICY_WEBHOOK not set", err=True)
         return
 
+    failures = 0
     for n in notices:
         if n["expired"]:
             title = f"Exception EXPIRED: {n['id']}"
@@ -290,9 +301,15 @@ def check_exceptions(today_opt, dry_run: bool, repo_root_opt: Path | None,
             )
         if dry_run:
             click.echo(f"[dry-run] would post: {title} | {body}")
-        else:
+            continue
+        try:
             teams.post_card(webhook_url_opt, title=title, body=body)
             click.echo(f"posted: {title}")
+        except Exception as e:
+            failures += 1
+            click.echo(f"failed-to-post: {n['id']}: {e}", err=True)
+    if failures and failures == len(notices):
+        sys.exit(1)
 
 
 if __name__ == "__main__":
