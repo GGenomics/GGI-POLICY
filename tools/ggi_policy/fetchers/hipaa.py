@@ -135,14 +135,26 @@ def _parse_section_xml(section_num: str, section_elem: ET.Element) -> list[Contr
 def fetch_from_xml(text: str, *, fetched_at: date) -> FrameworkData:
     """Parse the eCFR XML full-document response for Title 45 Part 164."""
     root = ET.fromstring(text)
-    controls: list[Control] = []
+    raw_controls: list[Control] = []
     for div8 in root.iter("DIV8"):
         if div8.get("TYPE") != "SECTION":
             continue
         section_num = div8.get("N", "")
         if not (section_num.startswith("164.") and len(section_num) > 4):
             continue
-        controls.extend(_parse_section_xml(section_num, div8))
+        raw_controls.extend(_parse_section_xml(section_num, div8))
+
+    # Sections like §164.501 reuse identifiers like (1)/(2) under multiple
+    # parallel definitions, producing duplicate full_ids from the parser.
+    # Citations always disambiguate by section + paragraph, so first-wins
+    # dedup keeps the catalog clean and the crosswalk readable.
+    seen: set[str] = set()
+    controls: list[Control] = []
+    for c in raw_controls:
+        if c.id in seen:
+            continue
+        seen.add(c.id)
+        controls.append(c)
 
     return FrameworkData(
         metadata=Metadata(

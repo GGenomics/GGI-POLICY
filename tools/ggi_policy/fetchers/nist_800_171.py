@@ -1,10 +1,12 @@
 """NIST 800-171 Rev 3 fetcher (OSCAL JSON catalog).
 
-OSCAL IDs already use the dotted citation form (`3.1.1`, `3.13.11`), so
-no normalization is needed.
+The live oscal-content repo emits IDs like `SP_800_171_03.01.01`. The citation
+form policy authors use is `3.1.1`. This fetcher strips the SP prefix and
+collapses zero-padding so the catalog matches what's documented in the spec.
 """
 
 import json
+import re
 from datetime import date
 
 from ggi_policy.fetchers import _http
@@ -14,11 +16,26 @@ from ggi_policy.fetchers._oscal import parse_catalog
 
 SOURCE_URL = "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-171/rev3/json/NIST_SP800-171_rev3_catalog.json"
 
+_PREFIX_RE = re.compile(r"^SP_800_171_")
+
+
+def _normalize_id(oscal_id: str) -> str:
+    """`SP_800_171_03.01.01` → `3.1.1`. Pass-through for already-citation-form IDs."""
+    stripped = _PREFIX_RE.sub("", oscal_id)
+    parts = stripped.split(".")
+    try:
+        return ".".join(str(int(p)) for p in parts)
+    except ValueError:
+        return oscal_id  # unrecognized shape; leave as-is
+
 
 def fetch_from_text(text: str, *, fetched_at: date) -> FrameworkData:
     payload = json.loads(text)
     _title, version, raw_controls = parse_catalog(payload)
-    controls = [Control(id=c["id"], title=c.get("title", "")) for c in raw_controls]
+    controls = [
+        Control(id=_normalize_id(c["id"]), title=c.get("title", ""))
+        for c in raw_controls
+    ]
     return FrameworkData(
         metadata=Metadata(
             version=version,

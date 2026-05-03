@@ -17,7 +17,7 @@ SAMPLE_CATALOG = {
         "soc2":         {"controls": [{"id": "CC6.1", "title": "x"}]},
         "hipaa":        {"controls": [{"id": "164.308(a)(4)(i)", "title": "x"}]},
         "nist_800_53":  {"controls": [{"id": "AC-2", "title": "x"}]},
-        "nist_800_171": {"controls": [{"id": "SP_800_171_03.01.01", "title": "x"}]},
+        "nist_800_171": {"controls": [{"id": "3.1.1", "title": "x"}]},
     }
 }
 

@@ -8,21 +8,21 @@
     },
     "groups": [
       {
-        "id": "3.1",
+        "id": "SP_800_171_03.01",
         "class": "family",
         "title": "Access Control",
         "controls": [
-          { "id": "3.1.1", "class": "SP800-171", "title": "Account Management" },
-          { "id": "3.1.2", "class": "SP800-171", "title": "Access Enforcement" },
-          { "id": "3.1.5", "class": "SP800-171", "title": "Least Privilege" }
+          { "id": "SP_800_171_03.01.01", "class": "SP800-171", "title": "Account Management" },
+          { "id": "SP_800_171_03.01.02", "class": "SP800-171", "title": "Access Enforcement" },
+          { "id": "SP_800_171_03.01.05", "class": "SP800-171", "title": "Least Privilege" }
         ]
       },
       {
-        "id": "3.13",
+        "id": "SP_800_171_03.13",
         "class": "family",
         "title": "System and Communications Protection",
         "controls": [
-          { "id": "3.13.11", "class": "SP800-171", "title": "Cryptographic Protection" }
+          { "id": "SP_800_171_03.13.11", "class": "SP800-171", "title": "Cryptographic Protection" }
         ]
       }
     ]

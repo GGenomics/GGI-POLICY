@@ -14,446 +14,446 @@ by hand; they will be overwritten.
 | Control | Title | Policies |
 |---|---|---|
 | GV.OC | Organizational Context | _(no policy)_ |
-| GV.OC-01 | GV.OC-01 | _(no policy)_ |
-| GV.OC-02 | GV.OC-02 | _(no policy)_ |
-| GV.OC-03 | GV.OC-03 | _(no policy)_ |
-| GV.OC-04 | GV.OC-04 | _(no policy)_ |
-| GV.OC-05 | GV.OC-05 | _(no policy)_ |
+| GV.OC-01 | The organizational mission is understood and informs cybersecurity risk management | _(no policy)_ |
+| GV.OC-02 | Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered | _(no policy)_ |
+| GV.OC-03 | Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed | _(no policy)_ |
+| GV.OC-04 | Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated | _(no policy)_ |
+| GV.OC-05 | Outcomes, capabilities, and services that the organization depends on are understood and communicated | _(no policy)_ |
 | GV.OV | Oversight | _(no policy)_ |
-| GV.OV-01 | GV.OV-01 | _(no policy)_ |
-| GV.OV-02 | GV.OV-02 | _(no policy)_ |
-| GV.OV-03 | GV.OV-03 | _(no policy)_ |
+| GV.OV-01 | Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction | _(no policy)_ |
+| GV.OV-02 | The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks | _(no policy)_ |
+| GV.OV-03 | Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed | _(no policy)_ |
 | GV.PO | Policy | _(no policy)_ |
-| GV.PO-01 | GV.PO-01 | _(no policy)_ |
-| GV.PO-02 | GV.PO-02 | _(no policy)_ |
+| GV.PO-01 | Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced | _(no policy)_ |
+| GV.PO-02 | Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission | _(no policy)_ |
 | GV.RM | Risk Management Strategy | _(no policy)_ |
-| GV.RM-01 | GV.RM-01 | _(no policy)_ |
-| GV.RM-02 | GV.RM-02 | _(no policy)_ |
-| GV.RM-03 | GV.RM-03 | _(no policy)_ |
-| GV.RM-04 | GV.RM-04 | _(no policy)_ |
-| GV.RM-05 | GV.RM-05 | _(no policy)_ |
-| GV.RM-06 | GV.RM-06 | _(no policy)_ |
-| GV.RM-07 | GV.RM-07 | _(no policy)_ |
+| GV.RM-01 | Risk management objectives are established and agreed to by organizational stakeholders | _(no policy)_ |
+| GV.RM-02 | Risk appetite and risk tolerance statements are established, communicated, and maintained | _(no policy)_ |
+| GV.RM-03 | Cybersecurity risk management activities and outcomes are included in enterprise risk management processes | _(no policy)_ |
+| GV.RM-04 | Strategic direction that describes appropriate risk response options is established and communicated | _(no policy)_ |
+| GV.RM-05 | Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties | _(no policy)_ |
+| GV.RM-06 | A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated | _(no policy)_ |
+| GV.RM-07 | Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions | _(no policy)_ |
 | GV.RR | Roles, Responsibilities, and Authorities | _(no policy)_ |
-| GV.RR-01 | GV.RR-01 | _(no policy)_ |
-| GV.RR-02 | GV.RR-02 | _(no policy)_ |
-| GV.RR-03 | GV.RR-03 | _(no policy)_ |
-| GV.RR-04 | GV.RR-04 | _(no policy)_ |
+| GV.RR-01 | Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving | _(no policy)_ |
+| GV.RR-02 | Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced | _(no policy)_ |
+| GV.RR-03 | Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies | _(no policy)_ |
+| GV.RR-04 | Cybersecurity is included in human resources practices | _(no policy)_ |
 | GV.SC | Cybersecurity Supply Chain Risk Management | _(no policy)_ |
-| GV.SC-01 | GV.SC-01 | _(no policy)_ |
-| GV.SC-02 | GV.SC-02 | _(no policy)_ |
-| GV.SC-03 | GV.SC-03 | _(no policy)_ |
-| GV.SC-04 | GV.SC-04 | _(no policy)_ |
-| GV.SC-05 | GV.SC-05 | _(no policy)_ |
-| GV.SC-06 | GV.SC-06 | _(no policy)_ |
-| GV.SC-07 | GV.SC-07 | _(no policy)_ |
-| GV.SC-08 | GV.SC-08 | _(no policy)_ |
-| GV.SC-09 | GV.SC-09 | _(no policy)_ |
-| GV.SC-10 | GV.SC-10 | _(no policy)_ |
+| GV.SC-01 | A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders | _(no policy)_ |
+| GV.SC-02 | Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally | _(no policy)_ |
+| GV.SC-03 | Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes | _(no policy)_ |
+| GV.SC-04 | Suppliers are known and prioritized by criticality | _(no policy)_ |
+| GV.SC-05 | Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties | _(no policy)_ |
+| GV.SC-06 | Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships | _(no policy)_ |
+| GV.SC-07 | The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship | _(no policy)_ |
+| GV.SC-08 | Relevant suppliers and other third parties are included in incident planning, response, and recovery activities | _(no policy)_ |
+| GV.SC-09 | Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle | _(no policy)_ |
+| GV.SC-10 | Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement | _(no policy)_ |
 | ID.AM | Asset Management | _(no policy)_ |
-| ID.AM-01 | ID.AM-01 | _(no policy)_ |
-| ID.AM-02 | ID.AM-02 | _(no policy)_ |
-| ID.AM-03 | ID.AM-03 | _(no policy)_ |
-| ID.AM-04 | ID.AM-04 | _(no policy)_ |
-| ID.AM-05 | ID.AM-05 | _(no policy)_ |
-| ID.AM-06 | ID.AM-06 | _(no policy)_ |
-| ID.AM-07 | ID.AM-07 | _(no policy)_ |
-| ID.AM-08 | ID.AM-08 | _(no policy)_ |
+| ID.AM-01 | Inventories of hardware managed by the organization are maintained | _(no policy)_ |
+| ID.AM-02 | Inventories of software, services, and systems managed by the organization are maintained | _(no policy)_ |
+| ID.AM-03 | Representations of the organization's authorized network communication and internal and external network data flows are maintained | _(no policy)_ |
+| ID.AM-04 | Inventories of services provided by suppliers are maintained | _(no policy)_ |
+| ID.AM-05 | Assets are prioritized based on classification, criticality, resources, and impact on the mission | _(no policy)_ |
+| ID.AM-06 | Cybersecurity roles and responsibilities for the entire workforce and third-party stakeholders (e.g., suppliers, customers, partners) are established | _(no policy)_ |
+| ID.AM-07 | Inventories of data and corresponding metadata for designated data types are maintained | _(no policy)_ |
+| ID.AM-08 | Systems, hardware, software, services, and data are managed throughout their life cycles | _(no policy)_ |
 | ID.BE | Business Environment | _(no policy)_ |
-| ID.BE-01 | ID.BE-01 | _(no policy)_ |
-| ID.BE-02 | ID.BE-02 | _(no policy)_ |
-| ID.BE-03 | ID.BE-03 | _(no policy)_ |
-| ID.BE-04 | ID.BE-04 | _(no policy)_ |
-| ID.BE-05 | ID.BE-05 | _(no policy)_ |
+| ID.BE-01 | The organization’s role in the supply chain is identified and communicated | _(no policy)_ |
+| ID.BE-02 | The organization’s place in critical infrastructure and its industry sector is identified and communicated | _(no policy)_ |
+| ID.BE-03 | Priorities for organizational mission, objectives, and activities are established and communicated | _(no policy)_ |
+| ID.BE-04 | Dependencies and critical functions for delivery of critical services are established | _(no policy)_ |
+| ID.BE-05 | Resilience requirements to support delivery of critical services are established for all operating states (e.g. under duress/attack, during recovery, normal operations) | _(no policy)_ |
 | ID.GV | Governance | _(no policy)_ |
-| ID.GV-01 | ID.GV-01 | _(no policy)_ |
-| ID.GV-02 | ID.GV-02 | _(no policy)_ |
-| ID.GV-03 | ID.GV-03 | _(no policy)_ |
-| ID.GV-04 | ID.GV-04 | _(no policy)_ |
+| ID.GV-01 | Organizational cybersecurity policy is established and communicated | _(no policy)_ |
+| ID.GV-02 | Cybersecurity roles and responsibilities are coordinated and aligned with internal roles and external partners | _(no policy)_ |
+| ID.GV-03 | Legal and regulatory requirements regarding cybersecurity, including privacy and civil liberties obligations, are understood and managed | _(no policy)_ |
+| ID.GV-04 | Governance and risk management processes address cybersecurity risks | _(no policy)_ |
 | ID.IM | Improvement | _(no policy)_ |
-| ID.IM-01 | ID.IM-01 | _(no policy)_ |
-| ID.IM-02 | ID.IM-02 | _(no policy)_ |
-| ID.IM-03 | ID.IM-03 | _(no policy)_ |
-| ID.IM-04 | ID.IM-04 | _(no policy)_ |
+| ID.IM-01 | Improvements are identified from evaluations | _(no policy)_ |
+| ID.IM-02 | Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties | _(no policy)_ |
+| ID.IM-03 | Improvements are identified from execution of operational processes, procedures, and activities | _(no policy)_ |
+| ID.IM-04 | Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved | _(no policy)_ |
 | ID.RA | Risk Assessment | _(no policy)_ |
-| ID.RA-01 | ID.RA-01 | _(no policy)_ |
-| ID.RA-02 | ID.RA-02 | _(no policy)_ |
-| ID.RA-03 | ID.RA-03 | _(no policy)_ |
-| ID.RA-04 | ID.RA-04 | _(no policy)_ |
-| ID.RA-05 | ID.RA-05 | _(no policy)_ |
-| ID.RA-06 | ID.RA-06 | _(no policy)_ |
-| ID.RA-07 | ID.RA-07 | _(no policy)_ |
-| ID.RA-08 | ID.RA-08 | _(no policy)_ |
-| ID.RA-09 | ID.RA-09 | _(no policy)_ |
-| ID.RA-10 | ID.RA-10 | _(no policy)_ |
+| ID.RA-01 | Vulnerabilities in assets are identified, validated, and recorded | _(no policy)_ |
+| ID.RA-02 | Cyber threat intelligence is received from information sharing forums and sources | _(no policy)_ |
+| ID.RA-03 | Internal and external threats to the organization are identified and recorded | _(no policy)_ |
+| ID.RA-04 | Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded | _(no policy)_ |
+| ID.RA-05 | Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization | _(no policy)_ |
+| ID.RA-06 | Risk responses are chosen, prioritized, planned, tracked, and communicated | _(no policy)_ |
+| ID.RA-07 | Changes and exceptions are managed, assessed for risk impact, recorded, and tracked | _(no policy)_ |
+| ID.RA-08 | Processes for receiving, analyzing, and responding to vulnerability disclosures are established | _(no policy)_ |
+| ID.RA-09 | The authenticity and integrity of hardware and software are assessed prior to acquisition and use | _(no policy)_ |
+| ID.RA-10 | Critical suppliers are assessed prior to acquisition | _(no policy)_ |
 | ID.RM | Risk Management Strategy | _(no policy)_ |
-| ID.RM-01 | ID.RM-01 | _(no policy)_ |
-| ID.RM-02 | ID.RM-02 | _(no policy)_ |
-| ID.RM-03 | ID.RM-03 | _(no policy)_ |
+| ID.RM-01 | Risk management processes are established, managed, and agreed to by organizational stakeholders | _(no policy)_ |
+| ID.RM-02 | Organizational risk tolerance is determined and clearly expressed | _(no policy)_ |
+| ID.RM-03 | The organization’s determination of risk tolerance is informed by its role in critical infrastructure and sector specific risk analysis | _(no policy)_ |
 | ID.SC | Supply Chain Risk Management | _(no policy)_ |
-| ID.SC-01 | ID.SC-01 | _(no policy)_ |
-| ID.SC-02 | ID.SC-02 | _(no policy)_ |
-| ID.SC-03 | ID.SC-03 | _(no policy)_ |
-| ID.SC-04 | ID.SC-04 | _(no policy)_ |
-| ID.SC-05 | ID.SC-05 | _(no policy)_ |
+| ID.SC-01 | Cyber supply chain risk management processes are identified, established, assessed, managed, and agreed to by organizational stakeholders | _(no policy)_ |
+| ID.SC-02 | Suppliers and third party partners of information systems, components, and services are identified, prioritized, and assessed using a cyber supply chain risk assessment process | _(no policy)_ |
+| ID.SC-03 | Contracts with suppliers and third-party partners are used to implement appropriate measures designed to meet the objectives of an organization’s cybersecurity program and Cyber Supply Chain Risk Management Plan. | _(no policy)_ |
+| ID.SC-04 | Suppliers and third-party partners are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual obligations. | _(no policy)_ |
+| ID.SC-05 | Response and recovery planning and testing are conducted with suppliers and third-party providers | _(no policy)_ |
 | PR.AA | Identity Management, Authentication, and Access Control | _(no policy)_ |
-| PR.AA-01 | PR.AA-01 | _(no policy)_ |
-| PR.AA-02 | PR.AA-02 | _(no policy)_ |
-| PR.AA-03 | PR.AA-03 | _(no policy)_ |
-| PR.AA-04 | PR.AA-04 | _(no policy)_ |
-| PR.AA-05 | PR.AA-05 | _(no policy)_ |
-| PR.AA-06 | PR.AA-06 | _(no policy)_ |
+| PR.AA-01 | Identities and credentials for authorized users, services, and hardware are managed by the organization | _(no policy)_ |
+| PR.AA-02 | Identities are proofed and bound to credentials based on the context of interactions | _(no policy)_ |
+| PR.AA-03 | Users, services, and hardware are authenticated | _(no policy)_ |
+| PR.AA-04 | Identity assertions are protected, conveyed, and verified | _(no policy)_ |
+| PR.AA-05 | Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties | _(no policy)_ |
+| PR.AA-06 | Physical access to assets is managed, monitored, and enforced commensurate with risk | _(no policy)_ |
 | PR.AC | Identity Management, Authentication and Access Control | _(no policy)_ |
-| PR.AC-01 | PR.AC-01 | _(no policy)_ |
-| PR.AC-02 | PR.AC-02 | _(no policy)_ |
-| PR.AC-03 | PR.AC-03 | _(no policy)_ |
-| PR.AC-04 | PR.AC-04 | _(no policy)_ |
-| PR.AC-05 | PR.AC-05 | _(no policy)_ |
-| PR.AC-06 | PR.AC-06 | _(no policy)_ |
-| PR.AC-07 | PR.AC-07 | _(no policy)_ |
+| PR.AC-01 | Identities and credentials are issued, managed, verified, revoked, and audited for authorized devices, users and processes | _(no policy)_ |
+| PR.AC-02 | Physical access to assets is managed and protected | _(no policy)_ |
+| PR.AC-03 | Remote access is managed | _(no policy)_ |
+| PR.AC-04 | Access permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties | _(no policy)_ |
+| PR.AC-05 | Network integrity is protected (e.g., network segregation, network segmentation) | _(no policy)_ |
+| PR.AC-06 | Identities are proofed and bound to credentials and asserted in interactions | _(no policy)_ |
+| PR.AC-07 | Users, devices, and other assets are authenticated (e.g., single-factor, multi-factor) commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational risks) | _(no policy)_ |
 | PR.AT | Awareness and Training | _(no policy)_ |
-| PR.AT-01 | PR.AT-01 | _(no policy)_ |
-| PR.AT-02 | PR.AT-02 | _(no policy)_ |
-| PR.AT-03 | PR.AT-03 | _(no policy)_ |
-| PR.AT-04 | PR.AT-04 | _(no policy)_ |
-| PR.AT-05 | PR.AT-05 | _(no policy)_ |
+| PR.AT-01 | Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind | _(no policy)_ |
+| PR.AT-02 | Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind | _(no policy)_ |
+| PR.AT-03 | Third-party stakeholders (e.g., suppliers, customers, partners) understand their roles and responsibilities | _(no policy)_ |
+| PR.AT-04 | Senior executives understand their roles and responsibilities | _(no policy)_ |
+| PR.AT-05 | Physical and cybersecurity personnel understand their roles and responsibilities | _(no policy)_ |
 | PR.DS | Data Security | _(no policy)_ |
-| PR.DS-01 | PR.DS-01 | _(no policy)_ |
-| PR.DS-02 | PR.DS-02 | _(no policy)_ |
-| PR.DS-03 | PR.DS-03 | _(no policy)_ |
-| PR.DS-04 | PR.DS-04 | _(no policy)_ |
-| PR.DS-05 | PR.DS-05 | _(no policy)_ |
-| PR.DS-06 | PR.DS-06 | _(no policy)_ |
-| PR.DS-07 | PR.DS-07 | _(no policy)_ |
-| PR.DS-08 | PR.DS-08 | _(no policy)_ |
-| PR.DS-10 | PR.DS-10 | _(no policy)_ |
-| PR.DS-11 | PR.DS-11 | _(no policy)_ |
+| PR.DS-01 | The confidentiality, integrity, and availability of data-at-rest are protected | _(no policy)_ |
+| PR.DS-02 | The confidentiality, integrity, and availability of data-in-transit are protected | _(no policy)_ |
+| PR.DS-03 | Assets are formally managed throughout removal, transfers, and disposition | _(no policy)_ |
+| PR.DS-04 | Adequate capacity to ensure availability is maintained | _(no policy)_ |
+| PR.DS-05 | Protections against data leaks are implemented | _(no policy)_ |
+| PR.DS-06 | Integrity checking mechanisms are used to verify software, firmware, and information integrity | _(no policy)_ |
+| PR.DS-07 | The development and testing environment(s) are separate from the production environment | _(no policy)_ |
+| PR.DS-08 | Integrity checking mechanisms are used to verify hardware integrity | _(no policy)_ |
+| PR.DS-10 | The confidentiality, integrity, and availability of data-in-use are protected | _(no policy)_ |
+| PR.DS-11 | Backups of data are created, protected, maintained, and tested | _(no policy)_ |
 | PR.IP | Information Protection Processes and Procedures | _(no policy)_ |
-| PR.IP-01 | PR.IP-01 | _(no policy)_ |
-| PR.IP-02 | PR.IP-02 | _(no policy)_ |
-| PR.IP-03 | PR.IP-03 | _(no policy)_ |
-| PR.IP-04 | PR.IP-04 | _(no policy)_ |
-| PR.IP-05 | PR.IP-05 | _(no policy)_ |
-| PR.IP-06 | PR.IP-06 | _(no policy)_ |
-| PR.IP-07 | PR.IP-07 | _(no policy)_ |
-| PR.IP-08 | PR.IP-08 | _(no policy)_ |
-| PR.IP-09 | PR.IP-09 | _(no policy)_ |
-| PR.IP-10 | PR.IP-10 | _(no policy)_ |
-| PR.IP-11 | PR.IP-11 | _(no policy)_ |
-| PR.IP-12 | PR.IP-12 | _(no policy)_ |
+| PR.IP-01 | A baseline configuration of information technology/industrial control systems is created and maintained incorporating security principles (e.g. concept of least functionality) | _(no policy)_ |
+| PR.IP-02 | A System Development Life Cycle to manage systems is implemented | _(no policy)_ |
+| PR.IP-03 | Configuration change control processes are in place | _(no policy)_ |
+| PR.IP-04 | Backups of information are conducted, maintained, and tested | _(no policy)_ |
+| PR.IP-05 | Policy and regulations regarding the physical operating environment for organizational assets are met | _(no policy)_ |
+| PR.IP-06 | Data is destroyed according to policy | _(no policy)_ |
+| PR.IP-07 | Protection processes are improved | _(no policy)_ |
+| PR.IP-08 | Effectiveness of protection technologies is shared | _(no policy)_ |
+| PR.IP-09 | Response plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are in place and managed | _(no policy)_ |
+| PR.IP-10 | Response and recovery plans are tested | _(no policy)_ |
+| PR.IP-11 | Cybersecurity is included in human resources practices (e.g., deprovisioning, personnel screening) | _(no policy)_ |
+| PR.IP-12 | A vulnerability management plan is developed and implemented | _(no policy)_ |
 | PR.IR | Technology Infrastructure Resilience | _(no policy)_ |
-| PR.IR-01 | PR.IR-01 | _(no policy)_ |
-| PR.IR-02 | PR.IR-02 | _(no policy)_ |
-| PR.IR-03 | PR.IR-03 | _(no policy)_ |
-| PR.IR-04 | PR.IR-04 | _(no policy)_ |
+| PR.IR-01 | Networks and environments are protected from unauthorized logical access and usage | _(no policy)_ |
+| PR.IR-02 | The organization's technology assets are protected from environmental threats | _(no policy)_ |
+| PR.IR-03 | Mechanisms are implemented to achieve resilience requirements in normal and adverse situations | _(no policy)_ |
+| PR.IR-04 | Adequate resource capacity to ensure availability is maintained | _(no policy)_ |
 | PR.MA | Maintenance | _(no policy)_ |
-| PR.MA-01 | PR.MA-01 | _(no policy)_ |
-| PR.MA-02 | PR.MA-02 | _(no policy)_ |
+| PR.MA-01 | Maintenance and repair of organizational assets are performed and logged, with approved and controlled tools | _(no policy)_ |
+| PR.MA-02 | Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access | _(no policy)_ |
 | PR.PS | Platform Security | _(no policy)_ |
-| PR.PS-01 | PR.PS-01 | _(no policy)_ |
-| PR.PS-02 | PR.PS-02 | _(no policy)_ |
-| PR.PS-03 | PR.PS-03 | _(no policy)_ |
-| PR.PS-04 | PR.PS-04 | _(no policy)_ |
-| PR.PS-05 | PR.PS-05 | _(no policy)_ |
-| PR.PS-06 | PR.PS-06 | _(no policy)_ |
+| PR.PS-01 | Configuration management practices are established and applied | _(no policy)_ |
+| PR.PS-02 | Software is maintained, replaced, and removed commensurate with risk | _(no policy)_ |
+| PR.PS-03 | Hardware is maintained, replaced, and removed commensurate with risk | _(no policy)_ |
+| PR.PS-04 | Log records are generated and made available for continuous monitoring | _(no policy)_ |
+| PR.PS-05 | Installation and execution of unauthorized software are prevented | _(no policy)_ |
+| PR.PS-06 | Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle | _(no policy)_ |
 | PR.PT | Protective Technology | _(no policy)_ |
-| PR.PT-01 | PR.PT-01 | _(no policy)_ |
-| PR.PT-02 | PR.PT-02 | _(no policy)_ |
-| PR.PT-03 | PR.PT-03 | _(no policy)_ |
-| PR.PT-04 | PR.PT-04 | _(no policy)_ |
-| PR.PT-05 | PR.PT-05 | _(no policy)_ |
+| PR.PT-01 | Audit/log records are determined, documented, implemented, and reviewed in accordance with policy | _(no policy)_ |
+| PR.PT-02 | Removable media is protected and its use restricted according to policy | _(no policy)_ |
+| PR.PT-03 | The principle of least functionality is incorporated by configuring systems to provide only essential capabilities | _(no policy)_ |
+| PR.PT-04 | Communications and control networks are protected | _(no policy)_ |
+| PR.PT-05 | Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations | _(no policy)_ |
 | DE.AE | Adverse Event Analysis | _(no policy)_ |
-| DE.AE-01 | DE.AE-01 | _(no policy)_ |
-| DE.AE-02 | DE.AE-02 | _(no policy)_ |
-| DE.AE-03 | DE.AE-03 | _(no policy)_ |
-| DE.AE-04 | DE.AE-04 | _(no policy)_ |
-| DE.AE-05 | DE.AE-05 | _(no policy)_ |
-| DE.AE-06 | DE.AE-06 | _(no policy)_ |
-| DE.AE-07 | DE.AE-07 | _(no policy)_ |
-| DE.AE-08 | DE.AE-08 | _(no policy)_ |
+| DE.AE-01 | A baseline of network operations and expected data flows for users and systems is established and managed | _(no policy)_ |
+| DE.AE-02 | Potentially adverse events are analyzed to better understand associated activities | _(no policy)_ |
+| DE.AE-03 | Information is correlated from multiple sources | _(no policy)_ |
+| DE.AE-04 | The estimated impact and scope of adverse events are understood | _(no policy)_ |
+| DE.AE-05 | Incident alert thresholds are established | _(no policy)_ |
+| DE.AE-06 | Information on adverse events is provided to authorized staff and tools | _(no policy)_ |
+| DE.AE-07 | Cyber threat intelligence and other contextual information are integrated into the analysis | _(no policy)_ |
+| DE.AE-08 | Incidents are declared when adverse events meet the defined incident criteria | _(no policy)_ |
 | DE.CM | Continuous Monitoring | _(no policy)_ |
-| DE.CM-01 | DE.CM-01 | _(no policy)_ |
-| DE.CM-02 | DE.CM-02 | _(no policy)_ |
-| DE.CM-03 | DE.CM-03 | _(no policy)_ |
-| DE.CM-04 | DE.CM-04 | _(no policy)_ |
-| DE.CM-05 | DE.CM-05 | _(no policy)_ |
-| DE.CM-06 | DE.CM-06 | _(no policy)_ |
-| DE.CM-07 | DE.CM-07 | _(no policy)_ |
-| DE.CM-08 | DE.CM-08 | _(no policy)_ |
-| DE.CM-09 | DE.CM-09 | _(no policy)_ |
+| DE.CM-01 | Networks and network services are monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-02 | The physical environment is monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-03 | Personnel activity and technology usage are monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-04 | Malicious code is detected | _(no policy)_ |
+| DE.CM-05 | Unauthorized mobile code is detected | _(no policy)_ |
+| DE.CM-06 | External service provider activities and services are monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-07 | Monitoring for unauthorized personnel, connections, devices, and software is performed | _(no policy)_ |
+| DE.CM-08 | Vulnerability scans are performed | _(no policy)_ |
+| DE.CM-09 | Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events | _(no policy)_ |
 | DE.DP | Detection Processes | _(no policy)_ |
-| DE.DP-01 | DE.DP-01 | _(no policy)_ |
-| DE.DP-02 | DE.DP-02 | _(no policy)_ |
-| DE.DP-03 | DE.DP-03 | _(no policy)_ |
-| DE.DP-04 | DE.DP-04 | _(no policy)_ |
-| DE.DP-05 | DE.DP-05 | _(no policy)_ |
+| DE.DP-01 | Roles and responsibilities for detection are well defined to ensure accountability | _(no policy)_ |
+| DE.DP-02 | Detection activities comply with all applicable requirements | _(no policy)_ |
+| DE.DP-03 | Detection processes are tested | _(no policy)_ |
+| DE.DP-04 | Event detection information is communicated | _(no policy)_ |
+| DE.DP-05 | Detection processes are continuously improved | _(no policy)_ |
 | RS.AN | Incident Analysis | _(no policy)_ |
-| RS.AN-01 | RS.AN-01 | _(no policy)_ |
-| RS.AN-02 | RS.AN-02 | _(no policy)_ |
-| RS.AN-03 | RS.AN-03 | _(no policy)_ |
-| RS.AN-04 | RS.AN-04 | _(no policy)_ |
-| RS.AN-05 | RS.AN-05 | _(no policy)_ |
-| RS.AN-06 | RS.AN-06 | _(no policy)_ |
-| RS.AN-07 | RS.AN-07 | _(no policy)_ |
-| RS.AN-08 | RS.AN-08 | _(no policy)_ |
+| RS.AN-01 | Notifications from detection systems are investigated | _(no policy)_ |
+| RS.AN-02 | The impact of the incident is understood | _(no policy)_ |
+| RS.AN-03 | Analysis is performed to establish what has taken place during an incident and the root cause of the incident | _(no policy)_ |
+| RS.AN-04 | Incidents are categorized consistent with response plans | _(no policy)_ |
+| RS.AN-05 | Processes are established to receive, analyze and respond to vulnerabilities disclosed to the organization from internal and external sources (e.g. internal testing, security bulletins, or security researchers) | _(no policy)_ |
+| RS.AN-06 | Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved | _(no policy)_ |
+| RS.AN-07 | Incident data and metadata are collected, and their integrity and provenance are preserved | _(no policy)_ |
+| RS.AN-08 | An incident's magnitude is estimated and validated | _(no policy)_ |
 | RS.CO | Incident Response Reporting and Communication | _(no policy)_ |
-| RS.CO-01 | RS.CO-01 | _(no policy)_ |
-| RS.CO-02 | RS.CO-02 | _(no policy)_ |
-| RS.CO-03 | RS.CO-03 | _(no policy)_ |
-| RS.CO-04 | RS.CO-04 | _(no policy)_ |
-| RS.CO-05 | RS.CO-05 | _(no policy)_ |
+| RS.CO-01 | Personnel know their roles and order of operations when a response is needed | _(no policy)_ |
+| RS.CO-02 | Internal and external stakeholders are notified of incidents | _(no policy)_ |
+| RS.CO-03 | Information is shared with designated internal and external stakeholders | _(no policy)_ |
+| RS.CO-04 | Coordination with stakeholders occurs consistent with response plans | _(no policy)_ |
+| RS.CO-05 | Voluntary information sharing occurs with external stakeholders to achieve broader cybersecurity situational awareness | _(no policy)_ |
 | RS.IM | Improvements | _(no policy)_ |
-| RS.IM-01 | RS.IM-01 | _(no policy)_ |
-| RS.IM-02 | RS.IM-02 | _(no policy)_ |
+| RS.IM-01 | Response plans incorporate lessons learned | _(no policy)_ |
+| RS.IM-02 | Response strategies are updated | _(no policy)_ |
 | RS.MA | Incident Management | _(no policy)_ |
-| RS.MA-01 | RS.MA-01 | _(no policy)_ |
-| RS.MA-02 | RS.MA-02 | _(no policy)_ |
-| RS.MA-03 | RS.MA-03 | _(no policy)_ |
-| RS.MA-04 | RS.MA-04 | _(no policy)_ |
-| RS.MA-05 | RS.MA-05 | _(no policy)_ |
+| RS.MA-01 | The incident response plan is executed in coordination with relevant third parties once an incident is declared | _(no policy)_ |
+| RS.MA-02 | Incident reports are triaged and validated | _(no policy)_ |
+| RS.MA-03 | Incidents are categorized and prioritized | _(no policy)_ |
+| RS.MA-04 | Incidents are escalated or elevated as needed | _(no policy)_ |
+| RS.MA-05 | The criteria for initiating incident recovery are applied | _(no policy)_ |
 | RS.MI | Incident Mitigation | _(no policy)_ |
-| RS.MI-01 | RS.MI-01 | _(no policy)_ |
-| RS.MI-02 | RS.MI-02 | _(no policy)_ |
-| RS.MI-03 | RS.MI-03 | _(no policy)_ |
+| RS.MI-01 | Incidents are contained | _(no policy)_ |
+| RS.MI-02 | Incidents are eradicated | _(no policy)_ |
+| RS.MI-03 | Newly identified vulnerabilities are mitigated or documented as accepted risks | _(no policy)_ |
 | RS.RP | Response Planning | _(no policy)_ |
-| RS.RP-01 | RS.RP-01 | _(no policy)_ |
+| RS.RP-01 | Response plan is executed during or after an incident | _(no policy)_ |
 | RC.CO | Incident Recovery Communication | _(no policy)_ |
-| RC.CO-01 | RC.CO-01 | _(no policy)_ |
-| RC.CO-02 | RC.CO-02 | _(no policy)_ |
-| RC.CO-03 | RC.CO-03 | _(no policy)_ |
-| RC.CO-04 | RC.CO-04 | _(no policy)_ |
+| RC.CO-01 | Public relations are managed | _(no policy)_ |
+| RC.CO-02 | Reputation is repaired after an incident | _(no policy)_ |
+| RC.CO-03 | Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders | _(no policy)_ |
+| RC.CO-04 | Public updates on incident recovery are shared using approved methods and messaging | _(no policy)_ |
 | RC.IM | Improvements | _(no policy)_ |
-| RC.IM-01 | RC.IM-01 | _(no policy)_ |
-| RC.IM-02 | RC.IM-02 | _(no policy)_ |
+| RC.IM-01 | Recovery plans incorporate lessons learned | _(no policy)_ |
+| RC.IM-02 | Recovery strategies are updated | _(no policy)_ |
 | RC.RP | Incident Recovery Plan Execution | _(no policy)_ |
-| RC.RP-01 | RC.RP-01 | _(no policy)_ |
-| RC.RP-02 | RC.RP-02 | _(no policy)_ |
-| RC.RP-03 | RC.RP-03 | _(no policy)_ |
-| RC.RP-04 | RC.RP-04 | _(no policy)_ |
-| RC.RP-05 | RC.RP-05 | _(no policy)_ |
-| RC.RP-06 | RC.RP-06 | _(no policy)_ |
+| RC.RP-01 | The recovery portion of the incident response plan is executed once initiated from the incident response process | _(no policy)_ |
+| RC.RP-02 | Recovery actions are selected, scoped, prioritized, and performed | _(no policy)_ |
+| RC.RP-03 | The integrity of backups and other restoration assets is verified before using them for restoration | _(no policy)_ |
+| RC.RP-04 | Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms | _(no policy)_ |
+| RC.RP-05 | The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed | _(no policy)_ |
+| RC.RP-06 | The end of incident recovery is declared based on criteria, and incident-related documentation is completed | _(no policy)_ |
 <!-- END: crosswalk-table nist_csf -->
 
 ## Coverage gaps
 
 <!-- BEGIN: crosswalk-gaps nist_csf -->
 - GV.OC — Organizational Context
-- GV.OC-01 — GV.OC-01
-- GV.OC-02 — GV.OC-02
-- GV.OC-03 — GV.OC-03
-- GV.OC-04 — GV.OC-04
-- GV.OC-05 — GV.OC-05
+- GV.OC-01 — The organizational mission is understood and informs cybersecurity risk management
+- GV.OC-02 — Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered
+- GV.OC-03 — Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed
+- GV.OC-04 — Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated
+- GV.OC-05 — Outcomes, capabilities, and services that the organization depends on are understood and communicated
 - GV.OV — Oversight
-- GV.OV-01 — GV.OV-01
-- GV.OV-02 — GV.OV-02
-- GV.OV-03 — GV.OV-03
+- GV.OV-01 — Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction
+- GV.OV-02 — The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks
+- GV.OV-03 — Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed
 - GV.PO — Policy
-- GV.PO-01 — GV.PO-01
-- GV.PO-02 — GV.PO-02
+- GV.PO-01 — Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced
+- GV.PO-02 — Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission
 - GV.RM — Risk Management Strategy
-- GV.RM-01 — GV.RM-01
-- GV.RM-02 — GV.RM-02
-- GV.RM-03 — GV.RM-03
-- GV.RM-04 — GV.RM-04
-- GV.RM-05 — GV.RM-05
-- GV.RM-06 — GV.RM-06
-- GV.RM-07 — GV.RM-07
+- GV.RM-01 — Risk management objectives are established and agreed to by organizational stakeholders
+- GV.RM-02 — Risk appetite and risk tolerance statements are established, communicated, and maintained
+- GV.RM-03 — Cybersecurity risk management activities and outcomes are included in enterprise risk management processes
+- GV.RM-04 — Strategic direction that describes appropriate risk response options is established and communicated
+- GV.RM-05 — Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties
+- GV.RM-06 — A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated
+- GV.RM-07 — Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions
 - GV.RR — Roles, Responsibilities, and Authorities
-- GV.RR-01 — GV.RR-01
-- GV.RR-02 — GV.RR-02
-- GV.RR-03 — GV.RR-03
-- GV.RR-04 — GV.RR-04
+- GV.RR-01 — Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving
+- GV.RR-02 — Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced
+- GV.RR-03 — Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies
+- GV.RR-04 — Cybersecurity is included in human resources practices
 - GV.SC — Cybersecurity Supply Chain Risk Management
-- GV.SC-01 — GV.SC-01
-- GV.SC-02 — GV.SC-02
-- GV.SC-03 — GV.SC-03
-- GV.SC-04 — GV.SC-04
-- GV.SC-05 — GV.SC-05
-- GV.SC-06 — GV.SC-06
-- GV.SC-07 — GV.SC-07
-- GV.SC-08 — GV.SC-08
-- GV.SC-09 — GV.SC-09
-- GV.SC-10 — GV.SC-10
+- GV.SC-01 — A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders
+- GV.SC-02 — Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally
+- GV.SC-03 — Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes
+- GV.SC-04 — Suppliers are known and prioritized by criticality
+- GV.SC-05 — Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties
+- GV.SC-06 — Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships
+- GV.SC-07 — The risks posed by a supplier, their products and services, and other third parties are understood, recorded, prioritized, assessed, responded to, and monitored over the course of the relationship
+- GV.SC-08 — Relevant suppliers and other third parties are included in incident planning, response, and recovery activities
+- GV.SC-09 — Supply chain security practices are integrated into cybersecurity and enterprise risk management programs, and their performance is monitored throughout the technology product and service life cycle
+- GV.SC-10 — Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement
 - ID.AM — Asset Management
-- ID.AM-01 — ID.AM-01
-- ID.AM-02 — ID.AM-02
-- ID.AM-03 — ID.AM-03
-- ID.AM-04 — ID.AM-04
-- ID.AM-05 — ID.AM-05
-- ID.AM-06 — ID.AM-06
-- ID.AM-07 — ID.AM-07
-- ID.AM-08 — ID.AM-08
+- ID.AM-01 — Inventories of hardware managed by the organization are maintained
+- ID.AM-02 — Inventories of software, services, and systems managed by the organization are maintained
+- ID.AM-03 — Representations of the organization's authorized network communication and internal and external network data flows are maintained
+- ID.AM-04 — Inventories of services provided by suppliers are maintained
+- ID.AM-05 — Assets are prioritized based on classification, criticality, resources, and impact on the mission
+- ID.AM-06 — Cybersecurity roles and responsibilities for the entire workforce and third-party stakeholders (e.g., suppliers, customers, partners) are established
+- ID.AM-07 — Inventories of data and corresponding metadata for designated data types are maintained
+- ID.AM-08 — Systems, hardware, software, services, and data are managed throughout their life cycles
 - ID.BE — Business Environment
-- ID.BE-01 — ID.BE-01
-- ID.BE-02 — ID.BE-02
-- ID.BE-03 — ID.BE-03
-- ID.BE-04 — ID.BE-04
-- ID.BE-05 — ID.BE-05
+- ID.BE-01 — The organization’s role in the supply chain is identified and communicated
+- ID.BE-02 — The organization’s place in critical infrastructure and its industry sector is identified and communicated
+- ID.BE-03 — Priorities for organizational mission, objectives, and activities are established and communicated
+- ID.BE-04 — Dependencies and critical functions for delivery of critical services are established
+- ID.BE-05 — Resilience requirements to support delivery of critical services are established for all operating states (e.g. under duress/attack, during recovery, normal operations)
 - ID.GV — Governance
-- ID.GV-01 — ID.GV-01
-- ID.GV-02 — ID.GV-02
-- ID.GV-03 — ID.GV-03
-- ID.GV-04 — ID.GV-04
+- ID.GV-01 — Organizational cybersecurity policy is established and communicated
+- ID.GV-02 — Cybersecurity roles and responsibilities are coordinated and aligned with internal roles and external partners
+- ID.GV-03 — Legal and regulatory requirements regarding cybersecurity, including privacy and civil liberties obligations, are understood and managed
+- ID.GV-04 — Governance and risk management processes address cybersecurity risks
 - ID.IM — Improvement
-- ID.IM-01 — ID.IM-01
-- ID.IM-02 — ID.IM-02
-- ID.IM-03 — ID.IM-03
-- ID.IM-04 — ID.IM-04
+- ID.IM-01 — Improvements are identified from evaluations
+- ID.IM-02 — Improvements are identified from security tests and exercises, including those done in coordination with suppliers and relevant third parties
+- ID.IM-03 — Improvements are identified from execution of operational processes, procedures, and activities
+- ID.IM-04 — Incident response plans and other cybersecurity plans that affect operations are established, communicated, maintained, and improved
 - ID.RA — Risk Assessment
-- ID.RA-01 — ID.RA-01
-- ID.RA-02 — ID.RA-02
-- ID.RA-03 — ID.RA-03
-- ID.RA-04 — ID.RA-04
-- ID.RA-05 — ID.RA-05
-- ID.RA-06 — ID.RA-06
-- ID.RA-07 — ID.RA-07
-- ID.RA-08 — ID.RA-08
-- ID.RA-09 — ID.RA-09
-- ID.RA-10 — ID.RA-10
+- ID.RA-01 — Vulnerabilities in assets are identified, validated, and recorded
+- ID.RA-02 — Cyber threat intelligence is received from information sharing forums and sources
+- ID.RA-03 — Internal and external threats to the organization are identified and recorded
+- ID.RA-04 — Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded
+- ID.RA-05 — Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response prioritization
+- ID.RA-06 — Risk responses are chosen, prioritized, planned, tracked, and communicated
+- ID.RA-07 — Changes and exceptions are managed, assessed for risk impact, recorded, and tracked
+- ID.RA-08 — Processes for receiving, analyzing, and responding to vulnerability disclosures are established
+- ID.RA-09 — The authenticity and integrity of hardware and software are assessed prior to acquisition and use
+- ID.RA-10 — Critical suppliers are assessed prior to acquisition
 - ID.RM — Risk Management Strategy
-- ID.RM-01 — ID.RM-01
-- ID.RM-02 — ID.RM-02
-- ID.RM-03 — ID.RM-03
+- ID.RM-01 — Risk management processes are established, managed, and agreed to by organizational stakeholders
+- ID.RM-02 — Organizational risk tolerance is determined and clearly expressed
+- ID.RM-03 — The organization’s determination of risk tolerance is informed by its role in critical infrastructure and sector specific risk analysis
 - ID.SC — Supply Chain Risk Management
-- ID.SC-01 — ID.SC-01
-- ID.SC-02 — ID.SC-02
-- ID.SC-03 — ID.SC-03
-- ID.SC-04 — ID.SC-04
-- ID.SC-05 — ID.SC-05
+- ID.SC-01 — Cyber supply chain risk management processes are identified, established, assessed, managed, and agreed to by organizational stakeholders
+- ID.SC-02 — Suppliers and third party partners of information systems, components, and services are identified, prioritized, and assessed using a cyber supply chain risk assessment process
+- ID.SC-03 — Contracts with suppliers and third-party partners are used to implement appropriate measures designed to meet the objectives of an organization’s cybersecurity program and Cyber Supply Chain Risk Management Plan.
+- ID.SC-04 — Suppliers and third-party partners are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual obligations.
+- ID.SC-05 — Response and recovery planning and testing are conducted with suppliers and third-party providers
 - PR.AA — Identity Management, Authentication, and Access Control
-- PR.AA-01 — PR.AA-01
-- PR.AA-02 — PR.AA-02
-- PR.AA-03 — PR.AA-03
-- PR.AA-04 — PR.AA-04
-- PR.AA-05 — PR.AA-05
-- PR.AA-06 — PR.AA-06
+- PR.AA-01 — Identities and credentials for authorized users, services, and hardware are managed by the organization
+- PR.AA-02 — Identities are proofed and bound to credentials based on the context of interactions
+- PR.AA-03 — Users, services, and hardware are authenticated
+- PR.AA-04 — Identity assertions are protected, conveyed, and verified
+- PR.AA-05 — Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties
+- PR.AA-06 — Physical access to assets is managed, monitored, and enforced commensurate with risk
 - PR.AC — Identity Management, Authentication and Access Control
-- PR.AC-01 — PR.AC-01
-- PR.AC-02 — PR.AC-02
-- PR.AC-03 — PR.AC-03
-- PR.AC-04 — PR.AC-04
-- PR.AC-05 — PR.AC-05
-- PR.AC-06 — PR.AC-06
-- PR.AC-07 — PR.AC-07
+- PR.AC-01 — Identities and credentials are issued, managed, verified, revoked, and audited for authorized devices, users and processes
+- PR.AC-02 — Physical access to assets is managed and protected
+- PR.AC-03 — Remote access is managed
+- PR.AC-04 — Access permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties
+- PR.AC-05 — Network integrity is protected (e.g., network segregation, network segmentation)
+- PR.AC-06 — Identities are proofed and bound to credentials and asserted in interactions
+- PR.AC-07 — Users, devices, and other assets are authenticated (e.g., single-factor, multi-factor) commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational risks)
 - PR.AT — Awareness and Training
-- PR.AT-01 — PR.AT-01
-- PR.AT-02 — PR.AT-02
-- PR.AT-03 — PR.AT-03
-- PR.AT-04 — PR.AT-04
-- PR.AT-05 — PR.AT-05
+- PR.AT-01 — Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind
+- PR.AT-02 — Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind
+- PR.AT-03 — Third-party stakeholders (e.g., suppliers, customers, partners) understand their roles and responsibilities
+- PR.AT-04 — Senior executives understand their roles and responsibilities
+- PR.AT-05 — Physical and cybersecurity personnel understand their roles and responsibilities
 - PR.DS — Data Security
-- PR.DS-01 — PR.DS-01
-- PR.DS-02 — PR.DS-02
-- PR.DS-03 — PR.DS-03
-- PR.DS-04 — PR.DS-04
-- PR.DS-05 — PR.DS-05
-- PR.DS-06 — PR.DS-06
-- PR.DS-07 — PR.DS-07
-- PR.DS-08 — PR.DS-08
-- PR.DS-10 — PR.DS-10
-- PR.DS-11 — PR.DS-11
+- PR.DS-01 — The confidentiality, integrity, and availability of data-at-rest are protected
+- PR.DS-02 — The confidentiality, integrity, and availability of data-in-transit are protected
+- PR.DS-03 — Assets are formally managed throughout removal, transfers, and disposition
+- PR.DS-04 — Adequate capacity to ensure availability is maintained
+- PR.DS-05 — Protections against data leaks are implemented
+- PR.DS-06 — Integrity checking mechanisms are used to verify software, firmware, and information integrity
+- PR.DS-07 — The development and testing environment(s) are separate from the production environment
+- PR.DS-08 — Integrity checking mechanisms are used to verify hardware integrity
+- PR.DS-10 — The confidentiality, integrity, and availability of data-in-use are protected
+- PR.DS-11 — Backups of data are created, protected, maintained, and tested
 - PR.IP — Information Protection Processes and Procedures
-- PR.IP-01 — PR.IP-01
-- PR.IP-02 — PR.IP-02
-- PR.IP-03 — PR.IP-03
-- PR.IP-04 — PR.IP-04
-- PR.IP-05 — PR.IP-05
-- PR.IP-06 — PR.IP-06
-- PR.IP-07 — PR.IP-07
-- PR.IP-08 — PR.IP-08
-- PR.IP-09 — PR.IP-09
-- PR.IP-10 — PR.IP-10
-- PR.IP-11 — PR.IP-11
-- PR.IP-12 — PR.IP-12
+- PR.IP-01 — A baseline configuration of information technology/industrial control systems is created and maintained incorporating security principles (e.g. concept of least functionality)
+- PR.IP-02 — A System Development Life Cycle to manage systems is implemented
+- PR.IP-03 — Configuration change control processes are in place
+- PR.IP-04 — Backups of information are conducted, maintained, and tested
+- PR.IP-05 — Policy and regulations regarding the physical operating environment for organizational assets are met
+- PR.IP-06 — Data is destroyed according to policy
+- PR.IP-07 — Protection processes are improved
+- PR.IP-08 — Effectiveness of protection technologies is shared
+- PR.IP-09 — Response plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are in place and managed
+- PR.IP-10 — Response and recovery plans are tested
+- PR.IP-11 — Cybersecurity is included in human resources practices (e.g., deprovisioning, personnel screening)
+- PR.IP-12 — A vulnerability management plan is developed and implemented
 - PR.IR — Technology Infrastructure Resilience
-- PR.IR-01 — PR.IR-01
-- PR.IR-02 — PR.IR-02
-- PR.IR-03 — PR.IR-03
-- PR.IR-04 — PR.IR-04
+- PR.IR-01 — Networks and environments are protected from unauthorized logical access and usage
+- PR.IR-02 — The organization's technology assets are protected from environmental threats
+- PR.IR-03 — Mechanisms are implemented to achieve resilience requirements in normal and adverse situations
+- PR.IR-04 — Adequate resource capacity to ensure availability is maintained
 - PR.MA — Maintenance
-- PR.MA-01 — PR.MA-01
-- PR.MA-02 — PR.MA-02
+- PR.MA-01 — Maintenance and repair of organizational assets are performed and logged, with approved and controlled tools
+- PR.MA-02 — Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access
 - PR.PS — Platform Security
-- PR.PS-01 — PR.PS-01
-- PR.PS-02 — PR.PS-02
-- PR.PS-03 — PR.PS-03
-- PR.PS-04 — PR.PS-04
-- PR.PS-05 — PR.PS-05
-- PR.PS-06 — PR.PS-06
+- PR.PS-01 — Configuration management practices are established and applied
+- PR.PS-02 — Software is maintained, replaced, and removed commensurate with risk
+- PR.PS-03 — Hardware is maintained, replaced, and removed commensurate with risk
+- PR.PS-04 — Log records are generated and made available for continuous monitoring
+- PR.PS-05 — Installation and execution of unauthorized software are prevented
+- PR.PS-06 — Secure software development practices are integrated, and their performance is monitored throughout the software development life cycle
 - PR.PT — Protective Technology
-- PR.PT-01 — PR.PT-01
-- PR.PT-02 — PR.PT-02
-- PR.PT-03 — PR.PT-03
-- PR.PT-04 — PR.PT-04
-- PR.PT-05 — PR.PT-05
+- PR.PT-01 — Audit/log records are determined, documented, implemented, and reviewed in accordance with policy
+- PR.PT-02 — Removable media is protected and its use restricted according to policy
+- PR.PT-03 — The principle of least functionality is incorporated by configuring systems to provide only essential capabilities
+- PR.PT-04 — Communications and control networks are protected
+- PR.PT-05 — Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations
 - DE.AE — Adverse Event Analysis
-- DE.AE-01 — DE.AE-01
-- DE.AE-02 — DE.AE-02
-- DE.AE-03 — DE.AE-03
-- DE.AE-04 — DE.AE-04
-- DE.AE-05 — DE.AE-05
-- DE.AE-06 — DE.AE-06
-- DE.AE-07 — DE.AE-07
-- DE.AE-08 — DE.AE-08
+- DE.AE-01 — A baseline of network operations and expected data flows for users and systems is established and managed
+- DE.AE-02 — Potentially adverse events are analyzed to better understand associated activities
+- DE.AE-03 — Information is correlated from multiple sources
+- DE.AE-04 — The estimated impact and scope of adverse events are understood
+- DE.AE-05 — Incident alert thresholds are established
+- DE.AE-06 — Information on adverse events is provided to authorized staff and tools
+- DE.AE-07 — Cyber threat intelligence and other contextual information are integrated into the analysis
+- DE.AE-08 — Incidents are declared when adverse events meet the defined incident criteria
 - DE.CM — Continuous Monitoring
-- DE.CM-01 — DE.CM-01
-- DE.CM-02 — DE.CM-02
-- DE.CM-03 — DE.CM-03
-- DE.CM-04 — DE.CM-04
-- DE.CM-05 — DE.CM-05
-- DE.CM-06 — DE.CM-06
-- DE.CM-07 — DE.CM-07
-- DE.CM-08 — DE.CM-08
-- DE.CM-09 — DE.CM-09
+- DE.CM-01 — Networks and network services are monitored to find potentially adverse events
+- DE.CM-02 — The physical environment is monitored to find potentially adverse events
+- DE.CM-03 — Personnel activity and technology usage are monitored to find potentially adverse events
+- DE.CM-04 — Malicious code is detected
+- DE.CM-05 — Unauthorized mobile code is detected
+- DE.CM-06 — External service provider activities and services are monitored to find potentially adverse events
+- DE.CM-07 — Monitoring for unauthorized personnel, connections, devices, and software is performed
+- DE.CM-08 — Vulnerability scans are performed
+- DE.CM-09 — Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events
 - DE.DP — Detection Processes
-- DE.DP-01 — DE.DP-01
-- DE.DP-02 — DE.DP-02
-- DE.DP-03 — DE.DP-03
-- DE.DP-04 — DE.DP-04
-- DE.DP-05 — DE.DP-05
+- DE.DP-01 — Roles and responsibilities for detection are well defined to ensure accountability
+- DE.DP-02 — Detection activities comply with all applicable requirements
+- DE.DP-03 — Detection processes are tested
+- DE.DP-04 — Event detection information is communicated
+- DE.DP-05 — Detection processes are continuously improved
 - RS.AN — Incident Analysis
-- RS.AN-01 — RS.AN-01
-- RS.AN-02 — RS.AN-02
-- RS.AN-03 — RS.AN-03
-- RS.AN-04 — RS.AN-04
-- RS.AN-05 — RS.AN-05
-- RS.AN-06 — RS.AN-06
-- RS.AN-07 — RS.AN-07
-- RS.AN-08 — RS.AN-08
+- RS.AN-01 — Notifications from detection systems are investigated
+- RS.AN-02 — The impact of the incident is understood
+- RS.AN-03 — Analysis is performed to establish what has taken place during an incident and the root cause of the incident
+- RS.AN-04 — Incidents are categorized consistent with response plans
+- RS.AN-05 — Processes are established to receive, analyze and respond to vulnerabilities disclosed to the organization from internal and external sources (e.g. internal testing, security bulletins, or security researchers)
+- RS.AN-06 — Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved
+- RS.AN-07 — Incident data and metadata are collected, and their integrity and provenance are preserved
+- RS.AN-08 — An incident's magnitude is estimated and validated
 - RS.CO — Incident Response Reporting and Communication
-- RS.CO-01 — RS.CO-01
-- RS.CO-02 — RS.CO-02
-- RS.CO-03 — RS.CO-03
-- RS.CO-04 — RS.CO-04
-- RS.CO-05 — RS.CO-05
+- RS.CO-01 — Personnel know their roles and order of operations when a response is needed
+- RS.CO-02 — Internal and external stakeholders are notified of incidents
+- RS.CO-03 — Information is shared with designated internal and external stakeholders
+- RS.CO-04 — Coordination with stakeholders occurs consistent with response plans
+- RS.CO-05 — Voluntary information sharing occurs with external stakeholders to achieve broader cybersecurity situational awareness
 - RS.IM — Improvements
-- RS.IM-01 — RS.IM-01
-- RS.IM-02 — RS.IM-02
+- RS.IM-01 — Response plans incorporate lessons learned
+- RS.IM-02 — Response strategies are updated
 - RS.MA — Incident Management
-- RS.MA-01 — RS.MA-01
-- RS.MA-02 — RS.MA-02
-- RS.MA-03 — RS.MA-03
-- RS.MA-04 — RS.MA-04
-- RS.MA-05 — RS.MA-05
+- RS.MA-01 — The incident response plan is executed in coordination with relevant third parties once an incident is declared
+- RS.MA-02 — Incident reports are triaged and validated
+- RS.MA-03 — Incidents are categorized and prioritized
+- RS.MA-04 — Incidents are escalated or elevated as needed
+- RS.MA-05 — The criteria for initiating incident recovery are applied
 - RS.MI — Incident Mitigation
-- RS.MI-01 — RS.MI-01
-- RS.MI-02 — RS.MI-02
-- RS.MI-03 — RS.MI-03
+- RS.MI-01 — Incidents are contained
+- RS.MI-02 — Incidents are eradicated
+- RS.MI-03 — Newly identified vulnerabilities are mitigated or documented as accepted risks
 - RS.RP — Response Planning
-- RS.RP-01 — RS.RP-01
+- RS.RP-01 — Response plan is executed during or after an incident
 - RC.CO — Incident Recovery Communication
-- RC.CO-01 — RC.CO-01
-- RC.CO-02 — RC.CO-02
-- RC.CO-03 — RC.CO-03
-- RC.CO-04 — RC.CO-04
+- RC.CO-01 — Public relations are managed
+- RC.CO-02 — Reputation is repaired after an incident
+- RC.CO-03 — Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders
+- RC.CO-04 — Public updates on incident recovery are shared using approved methods and messaging
 - RC.IM — Improvements
-- RC.IM-01 — RC.IM-01
-- RC.IM-02 — RC.IM-02
+- RC.IM-01 — Recovery plans incorporate lessons learned
+- RC.IM-02 — Recovery strategies are updated
 - RC.RP — Incident Recovery Plan Execution
-- RC.RP-01 — RC.RP-01
-- RC.RP-02 — RC.RP-02
-- RC.RP-03 — RC.RP-03
-- RC.RP-04 — RC.RP-04
-- RC.RP-05 — RC.RP-05
-- RC.RP-06 — RC.RP-06
+- RC.RP-01 — The recovery portion of the incident response plan is executed once initiated from the incident response process
+- RC.RP-02 — Recovery actions are selected, scoped, prioritized, and performed
+- RC.RP-03 — The integrity of backups and other restoration assets is verified before using them for restoration
+- RC.RP-04 — Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms
+- RC.RP-05 — The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed
+- RC.RP-06 — The end of incident recovery is declared based on criteria, and incident-related documentation is completed
 <!-- END: crosswalk-gaps nist_csf -->

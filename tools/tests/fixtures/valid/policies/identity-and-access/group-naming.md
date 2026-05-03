@@ -23,7 +23,7 @@ frameworks:
   soc2:         [CC6.1]
   hipaa:        ["164.308(a)(4)(i)"]
   nist_800_53:  [AC-2]
-  nist_800_171: ["SP_800_171_03.01.01"]
+  nist_800_171: ["3.1.1"]
 external_references:
   - https://learn.microsoft.com/entra/identity/users/groups-naming-policy
 ---
