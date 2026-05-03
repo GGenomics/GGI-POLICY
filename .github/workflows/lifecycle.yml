@@ -1,0 +1,69 @@
+name: lifecycle
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC = 06:00 PT (winter) / 07:00 PT (summer)
+  workflow_dispatch:        # let an operator trigger manually too
+
+permissions:
+  contents: read
+  issues: write             # check-reviews creates issues
+
+jobs:
+  check-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with: { version: "latest" }
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - name: Find overdue reviews
+        id: find
+        run: uv run ggi-policy check-reviews > overdue.tsv
+      - name: Open issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ ! -s overdue.tsv ]] || ! grep -q '^OVERDUE' overdue.tsv; then
+            echo "no overdue reviews"
+            exit 0
+          fi
+          while IFS=$'\t' read -r kind title owner body; do
+            [[ "$kind" != "OVERDUE" ]] && continue
+            existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number' || true)
+            if [[ -n "$existing" ]]; then
+              echo "issue already open: #$existing — $title"
+              continue
+            fi
+            gh issue create \
+              --title "$title" \
+              --body "$body" \
+              --label "review-due"
+          done < overdue.tsv
+
+  notify-effective:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with: { version: "latest" }
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - name: Notify effective-date arrivals
+        env:
+          TEAMS_POLICY_WEBHOOK: ${{ secrets.TEAMS_POLICY_WEBHOOK }}
+        run: uv run ggi-policy notify-effective
+
+  check-exceptions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with: { version: "latest" }
+      - run: uv python install 3.12
+      - run: uv sync --frozen
+      - name: Notify exception expirations
+        env:
+          TEAMS_POLICY_WEBHOOK: ${{ secrets.TEAMS_POLICY_WEBHOOK }}
+        run: uv run ggi-policy check-exceptions
