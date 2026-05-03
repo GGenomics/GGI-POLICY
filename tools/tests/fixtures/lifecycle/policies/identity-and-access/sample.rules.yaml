@@ -1,0 +1,3 @@
+policy_id: POL-IAM-SAMPLE
+rules:
+  - { id: R1, statement: "test rule", type: flag, severity: required }
