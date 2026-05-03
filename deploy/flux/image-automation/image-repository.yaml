@@ -1,0 +1,16 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: policy-docs-image
+  namespace: flux-system
+  labels:
+    app.kubernetes.io/name: policy-docs
+    app.kubernetes.io/part-of: ggi-policy
+spec:
+  image: ghcr.io/ggenomics/ggi-policy-site
+  interval: 5m
+  # GHCR allows public anonymous reads; if your cluster's image-reflector
+  # has a different secret expectation (private registry, rate-limit
+  # bypass), set secretRef.name to a Secret in flux-system.
+  # TODO(operator): confirm whether the cluster's image-reflector needs
+  # explicit credentials for ghcr.io.

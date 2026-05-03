@@ -1,0 +1,30 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: ggi-internals-image-updates
+  namespace: flux-system
+  labels:
+    app.kubernetes.io/part-of: ggi-policy
+spec:
+  interval: 5m
+  sourceRef:
+    kind: GitRepository
+    # TODO(operator): confirm the GitRepository name. Most clusters use
+    # 'flux-system' for the bootstrap repo; if ggi_internals is referenced
+    # by a different name (e.g., 'ggi-internals'), update here.
+    name: flux-system
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: flux-image-automation@ggenomics.com
+        name: Flux Image Automation
+      messageTemplate: |
+        chore(image): bump policy-docs to {{range .Updated.Images}}{{println .}}{{end}}
+    push:
+      branch: main
+  update:
+    path: ./GitOps/k8s/prod/apps/policy-docs
+    strategy: Setters

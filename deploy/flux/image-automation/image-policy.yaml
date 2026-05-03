@@ -1,0 +1,19 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: policy-docs-image
+  namespace: flux-system
+  labels:
+    app.kubernetes.io/name: policy-docs
+    app.kubernetes.io/part-of: ggi-policy
+spec:
+  imageRepositoryRef:
+    name: policy-docs-image
+  filterTags:
+    # Match tags emitted by .github/workflows/build-and-push.yml as
+    # `main-{run_number}`. The numeric portion is captured for ordering.
+    pattern: '^main-(?P<num>\d+)$'
+    extract: '$num'
+  policy:
+    numerical:
+      order: asc
