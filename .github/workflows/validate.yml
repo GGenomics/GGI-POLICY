@@ -27,3 +27,6 @@ jobs:
 
       - name: Run repo-wide validation
         run: uv run ggi-policy validate
+
+      - name: Check crosswalks are up to date
+        run: uv run ggi-policy build-crosswalks --check
