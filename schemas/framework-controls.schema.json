@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ggenomics.com/schemas/framework-controls.schema.json",
+  "title": "Framework controls catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["frameworks"],
+  "properties": {
+    "frameworks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nist_csf":     { "$ref": "#/$defs/framework" },
+        "cis":          { "$ref": "#/$defs/framework" },
+        "soc2":         { "$ref": "#/$defs/framework" },
+        "hipaa":        { "$ref": "#/$defs/framework" },
+        "nist_800_53":  { "$ref": "#/$defs/framework" },
+        "nist_800_171": { "$ref": "#/$defs/framework" }
+      }
+    }
+  },
+  "$defs": {
+    "framework": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metadata", "controls"],
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "fetched_at", "source_url", "fetcher"],
+          "properties": {
+            "version":     { "type": "string", "minLength": 1 },
+            "fetched_at":  { "type": "string", "format": "date" },
+            "source_url":  { "type": "string", "format": "uri" },
+            "fetcher":     { "type": "string", "minLength": 1 },
+            "notes":       { "type": "string" }
+          }
+        },
+        "controls": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/control" }
+        }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id":          { "type": "string", "minLength": 1 },
+        "title":       { "type": "string", "minLength": 1 },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}
