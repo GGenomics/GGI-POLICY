@@ -101,5 +101,33 @@ def _frameworkdata_from_dict(name: str, raw: dict):
     )
 
 
+@main.command("build-crosswalks")
+@click.option("--check", "check_mode", is_flag=True, default=False,
+              help="Exit non-zero if regeneration would change any file.")
+@click.option("--repo-root", "repo_root_opt",
+              type=click.Path(exists=True, file_okay=False, path_type=Path),
+              default=None)
+def build_crosswalks(check_mode: bool, repo_root_opt: Path | None) -> None:
+    """Regenerate the marker regions inside crosswalks/<framework>.md files."""
+    from ggi_policy import crosswalks as crosswalks_mod
+
+    root = (repo_root_opt or repo_root()).resolve()
+    ok, changed = crosswalks_mod.build_all(root, check=check_mode)
+    if check_mode:
+        if ok:
+            click.echo("OK: crosswalks up to date")
+            sys.exit(0)
+        for path in changed:
+            click.echo(path, err=True)
+        click.echo(f"\nFAIL: {len(changed)} crosswalk file(s) would change. "
+                   f"Run `uv run ggi-policy build-crosswalks` and commit.", err=True)
+        sys.exit(1)
+    if changed:
+        for path in changed:
+            click.echo(f"updated {path}")
+    else:
+        click.echo("no changes")
+
+
 if __name__ == "__main__":
     main()
