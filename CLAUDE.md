@@ -40,8 +40,25 @@ A rule is enforceable IF AND ONLY IF:
 Use the helpers — do not re-implement the predicate:
 
 ```python
-from ggi_policy.validate.runner import run
+from ggi_policy.enforce import is_enforceable, evaluate
 from ggi_policy.repo import repo_root
+
+# Is a specific rule enforceable today?
+ok = is_enforceable(repo_root(), "POL-IAM-GROUP-NAMING", "R1")
+
+# Evaluate a candidate against a rule. Returns EvaluationResult with:
+#   verdict: "compliant" | "non_compliant" | "skipped" | "unknown_rule"
+#   severity, citation, exceptions
+result = evaluate(repo_root(), "POL-IAM-GROUP-NAMING.R1", "sg-az-prod-finance-readers")
+print(result.verdict)
+print(result.citation)   # "[POL-IAM-GROUP-NAMING.R1] ..."
+```
+
+For batch / repo-wide validation (frontmatter, sidecar shape, consistency,
+approvers, etc., not per-rule evaluation), use the runner:
+
+```python
+from ggi_policy.validate.runner import run
 report = run(repo_root=repo_root())
 # report.findings is a list of ValidationFinding(code, path, message, locator)
 ```

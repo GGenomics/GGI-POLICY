@@ -25,14 +25,22 @@ rules:
     expected: { schema_valid: true }
 
   - id: R4
-    statement: Body follows the nine-section skeleton.
-    type: allowed_values
+    statement: Body follows the nine-section skeleton in the prescribed order.
+    type: flag
     severity: required
     applies_to:
       object_type: body_section_order
-    allowed:
-      - ["Purpose", "Scope", "Policy Statements", "Rationale", "Examples",
-         "Implementation Guidance", "Exceptions", "References", "Revision History"]
+    expected:
+      section_order:
+        - Purpose
+        - Scope
+        - Policy Statements
+        - Rationale
+        - Examples
+        - Implementation Guidance
+        - Exceptions
+        - References
+        - Revision History
 
   - id: R5
     statement: Sidecar rules conform to schemas/policy-rules.schema.json; sub-IDs unique and never reused.

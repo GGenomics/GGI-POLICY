@@ -1,7 +1,7 @@
 policy_id: POL-META-AI-AGENT-CONTRACT
 rules:
   - id: R1
-    statement: Agents read the eight authoritative entry points in the prescribed order.
+    statement: Agents read the authoritative entry points in the prescribed order.
     type: flag
     severity: required
     applies_to:
