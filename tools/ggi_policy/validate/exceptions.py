@@ -62,7 +62,24 @@ def check(exc: LoadedException, rule_index: dict[str, dict], report: ValidationR
     expires = _as_date(exc.metadata.get("expires"))
     if rule is not None and eff and expires:
         severity = rule.get("severity")
-        cap = CAP_DAYS_REQUIRED if severity == "required" else CAP_DAYS_RECOMMENDED
+        if severity == "required":
+            cap = CAP_DAYS_REQUIRED
+        elif severity == "recommended":
+            cap = CAP_DAYS_RECOMMENDED
+        else:
+            # The rules schema constrains severity to required/recommended; reaching
+            # this branch means the rule_index was populated from an unvalidated
+            # source. Surface the issue rather than silently picking a cap.
+            report.add(ValidationFinding(
+                code="EXCEPTION_RULE_SEVERITY_UNKNOWN",
+                path=exc.path,
+                message=(
+                    f"referenced rule {ref!r} has unrecognized severity {severity!r}; "
+                    f"cap cannot be applied"
+                ),
+                locator="policy_ref",
+            ))
+            return
         if (expires - eff).days > cap:
             report.add(ValidationFinding(
                 code="EXCEPTION_CAP_EXCEEDED",

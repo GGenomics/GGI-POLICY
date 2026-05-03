@@ -55,3 +55,17 @@ def test_dangling_policy_ref_is_reported(fixtures_dir: Path) -> None:
     exc_validate.check(exc, rule_index, report)
     codes = {f.code for f in report.findings}
     assert "EXCEPTION_DANGLING_REF" in codes
+
+
+def test_unknown_severity_is_reported_and_skips_cap(fixtures_dir: Path) -> None:
+    """If the rule_index supplies a rule with unrecognized severity, the validator
+    must surface it rather than silently applying the lenient (recommended) cap."""
+    exc = io.load_exception(fixtures_dir / "valid/exceptions/EXC-2026-001-finance-legacy-group.md")
+    rule_index = {
+        "POL-IAM-GROUP-NAMING.R1": {"id": "R1", "severity": None}
+    }
+    report = ValidationReport()
+    exc_validate.check(exc, rule_index, report)
+    codes = {f.code for f in report.findings}
+    assert "EXCEPTION_RULE_SEVERITY_UNKNOWN" in codes
+    assert "EXCEPTION_CAP_EXCEEDED" not in codes
