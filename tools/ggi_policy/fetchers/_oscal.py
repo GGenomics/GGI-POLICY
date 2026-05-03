@@ -8,6 +8,9 @@ def iter_controls(groups: list[dict]) -> Iterator[dict]:
     for group in groups or []:
         for control in group.get("controls", []) or []:
             yield control
+            # Also recurse into a control's own nested controls (enhancements).
+            for sub in control.get("controls", []) or []:
+                yield sub
         nested = group.get("groups", [])
         if nested:
             yield from iter_controls(nested)
