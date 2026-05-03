@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: policy-docs
+
+commonLabels:
+  app.kubernetes.io/part-of: ggi-policy
+  app.kubernetes.io/managed-by: flux
+
+resources:
+  - namespace.yaml
+  - service-account.yaml
+  - vault-static-secret.yaml
+  - deployment.yaml
+  - service.yaml
+  - oauth2-proxy.deployment.yaml
+  - oauth2-proxy.service.yaml
+  - ingress.yaml
+
+images:
+  # Flux ImageUpdateAutomation rewrites the `newTag:` value in this block
+  # whenever the ImagePolicy selects a new tag. Initial value matches what
+  # was last published by the build-and-push workflow.
+  - name: ghcr.io/ggenomics/ggi-policy-site
+    newTag: main-1
