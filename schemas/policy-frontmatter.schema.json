@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ggenomics.com/schemas/policy-frontmatter.schema.json",
+  "title": "GGI policy frontmatter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "title", "summary", "domain", "status", "version",
+    "effective_date", "last_reviewed", "review_cycle",
+    "owner", "approvers", "applies_to", "frameworks"
+  ],
+  "properties": {
+    "id":             { "type": "string", "pattern": "^POL-[A-Z]+-[A-Z0-9-]+$" },
+    "title":          { "type": "string", "minLength": 1 },
+    "summary":        { "type": "string", "minLength": 1 },
+    "domain":         { "enum": ["IAM","DAT","PRV","APP","END","NET","IR","VND","SEC","BCP","HR","META"] },
+    "status":         { "enum": ["draft","effective","superseded","retired"] },
+    "version":        { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "effective_date": { "type": "string", "format": "date" },
+    "last_reviewed":  { "type": "string", "format": "date" },
+    "review_cycle":   { "enum": ["annual","biannual","triennial","event-driven"] },
+    "owner":          { "type": "string", "minLength": 1 },
+    "approvers":      { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+    "applies_to":     { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 },
+    "supersedes":     { "type": "array", "items": { "type": "string", "pattern": "^POL-[A-Z]+-[A-Z0-9-]+$" }, "default": [] },
+    "superseded_by":  { "type": "array", "items": { "type": "string", "pattern": "^POL-[A-Z]+-[A-Z0-9-]+$" }, "default": [] },
+    "related":        { "type": "array", "items": { "type": "string", "pattern": "^POL-[A-Z]+-[A-Z0-9-]+$" }, "default": [] },
+    "frameworks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nist_csf":     { "type": "array", "items": { "type": "string", "pattern": "^(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-\\d+$" } },
+        "cis":          { "type": "array", "items": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" } },
+        "soc2":         { "type": "array", "items": { "type": "string", "pattern": "^(CC|A|PI|C|P)\\d+\\.\\d+$" } },
+        "hipaa":        { "type": "array", "items": { "type": "string", "pattern": "^164\\.\\d{3}\\([a-z]\\)(\\(\\d+\\))?(\\([ivx]+\\))?$" } },
+        "nist_800_53":  { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]{2}-\\d+(\\(\\d+\\))?$" } },
+        "nist_800_171": { "type": "array", "items": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" } }
+      }
+    },
+    "external_references": { "type": "array", "items": { "type": "string", "format": "uri" }, "default": [] }
+  }
+}
