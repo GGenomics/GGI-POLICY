@@ -72,3 +72,22 @@ def test_load_with_validate_schema_raises_on_invalid(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="failed schema validation"):
         controls.load(target, validate_schema=True)
+
+
+def test_save_sorts_controls_by_id_within_framework(tmp_path: Path) -> None:
+    from datetime import date
+
+    from ggi_policy.fetchers._models import Control, FrameworkData, Metadata
+
+    fd = FrameworkData(
+        metadata=Metadata(
+            version="1", fetched_at=date(2026, 5, 2),
+            source_url="https://x", fetcher="cis",
+        ),
+        controls=[Control(id="6.10", title="z"), Control(id="5.4", title="a"), Control(id="6.1", title="b")],
+    )
+    target = tmp_path / "fc.json"
+    controls.save({"cis": fd}, target)
+    loaded = controls.load(target)
+    ids = [c["id"] for c in loaded["frameworks"]["cis"]["controls"]]
+    assert ids == ["5.4", "6.1", "6.10"]

@@ -13,6 +13,31 @@ by hand; they will be overwritten.
 <!-- BEGIN: crosswalk-table nist_csf -->
 | Control | Title | Policies |
 |---|---|---|
+| DE.AE | Adverse Event Analysis | _(no policy)_ |
+| DE.AE-01 | A baseline of network operations and expected data flows for users and systems is established and managed | _(no policy)_ |
+| DE.AE-02 | Potentially adverse events are analyzed to better understand associated activities | _(no policy)_ |
+| DE.AE-03 | Information is correlated from multiple sources | _(no policy)_ |
+| DE.AE-04 | The estimated impact and scope of adverse events are understood | _(no policy)_ |
+| DE.AE-05 | Incident alert thresholds are established | _(no policy)_ |
+| DE.AE-06 | Information on adverse events is provided to authorized staff and tools | _(no policy)_ |
+| DE.AE-07 | Cyber threat intelligence and other contextual information are integrated into the analysis | _(no policy)_ |
+| DE.AE-08 | Incidents are declared when adverse events meet the defined incident criteria | _(no policy)_ |
+| DE.CM | Continuous Monitoring | _(no policy)_ |
+| DE.CM-01 | Networks and network services are monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-02 | The physical environment is monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-03 | Personnel activity and technology usage are monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-04 | Malicious code is detected | _(no policy)_ |
+| DE.CM-05 | Unauthorized mobile code is detected | _(no policy)_ |
+| DE.CM-06 | External service provider activities and services are monitored to find potentially adverse events | _(no policy)_ |
+| DE.CM-07 | Monitoring for unauthorized personnel, connections, devices, and software is performed | _(no policy)_ |
+| DE.CM-08 | Vulnerability scans are performed | _(no policy)_ |
+| DE.CM-09 | Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events | _(no policy)_ |
+| DE.DP | Detection Processes | _(no policy)_ |
+| DE.DP-01 | Roles and responsibilities for detection are well defined to ensure accountability | _(no policy)_ |
+| DE.DP-02 | Detection activities comply with all applicable requirements | _(no policy)_ |
+| DE.DP-03 | Detection processes are tested | _(no policy)_ |
+| DE.DP-04 | Event detection information is communicated | _(no policy)_ |
+| DE.DP-05 | Detection processes are continuously improved | _(no policy)_ |
 | GV.OC | Organizational Context | _(no policy)_ |
 | GV.OC-01 | The organizational mission is understood and informs cybersecurity risk management | _(no policy)_ |
 | GV.OC-02 | Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered | _(no policy)_ |
@@ -162,31 +187,21 @@ by hand; they will be overwritten.
 | PR.PT-03 | The principle of least functionality is incorporated by configuring systems to provide only essential capabilities | _(no policy)_ |
 | PR.PT-04 | Communications and control networks are protected | _(no policy)_ |
 | PR.PT-05 | Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations | _(no policy)_ |
-| DE.AE | Adverse Event Analysis | _(no policy)_ |
-| DE.AE-01 | A baseline of network operations and expected data flows for users and systems is established and managed | _(no policy)_ |
-| DE.AE-02 | Potentially adverse events are analyzed to better understand associated activities | _(no policy)_ |
-| DE.AE-03 | Information is correlated from multiple sources | _(no policy)_ |
-| DE.AE-04 | The estimated impact and scope of adverse events are understood | _(no policy)_ |
-| DE.AE-05 | Incident alert thresholds are established | _(no policy)_ |
-| DE.AE-06 | Information on adverse events is provided to authorized staff and tools | _(no policy)_ |
-| DE.AE-07 | Cyber threat intelligence and other contextual information are integrated into the analysis | _(no policy)_ |
-| DE.AE-08 | Incidents are declared when adverse events meet the defined incident criteria | _(no policy)_ |
-| DE.CM | Continuous Monitoring | _(no policy)_ |
-| DE.CM-01 | Networks and network services are monitored to find potentially adverse events | _(no policy)_ |
-| DE.CM-02 | The physical environment is monitored to find potentially adverse events | _(no policy)_ |
-| DE.CM-03 | Personnel activity and technology usage are monitored to find potentially adverse events | _(no policy)_ |
-| DE.CM-04 | Malicious code is detected | _(no policy)_ |
-| DE.CM-05 | Unauthorized mobile code is detected | _(no policy)_ |
-| DE.CM-06 | External service provider activities and services are monitored to find potentially adverse events | _(no policy)_ |
-| DE.CM-07 | Monitoring for unauthorized personnel, connections, devices, and software is performed | _(no policy)_ |
-| DE.CM-08 | Vulnerability scans are performed | _(no policy)_ |
-| DE.CM-09 | Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events | _(no policy)_ |
-| DE.DP | Detection Processes | _(no policy)_ |
-| DE.DP-01 | Roles and responsibilities for detection are well defined to ensure accountability | _(no policy)_ |
-| DE.DP-02 | Detection activities comply with all applicable requirements | _(no policy)_ |
-| DE.DP-03 | Detection processes are tested | _(no policy)_ |
-| DE.DP-04 | Event detection information is communicated | _(no policy)_ |
-| DE.DP-05 | Detection processes are continuously improved | _(no policy)_ |
+| RC.CO | Incident Recovery Communication | _(no policy)_ |
+| RC.CO-01 | Public relations are managed | _(no policy)_ |
+| RC.CO-02 | Reputation is repaired after an incident | _(no policy)_ |
+| RC.CO-03 | Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders | _(no policy)_ |
+| RC.CO-04 | Public updates on incident recovery are shared using approved methods and messaging | _(no policy)_ |
+| RC.IM | Improvements | _(no policy)_ |
+| RC.IM-01 | Recovery plans incorporate lessons learned | _(no policy)_ |
+| RC.IM-02 | Recovery strategies are updated | _(no policy)_ |
+| RC.RP | Incident Recovery Plan Execution | _(no policy)_ |
+| RC.RP-01 | The recovery portion of the incident response plan is executed once initiated from the incident response process | _(no policy)_ |
+| RC.RP-02 | Recovery actions are selected, scoped, prioritized, and performed | _(no policy)_ |
+| RC.RP-03 | The integrity of backups and other restoration assets is verified before using them for restoration | _(no policy)_ |
+| RC.RP-04 | Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms | _(no policy)_ |
+| RC.RP-05 | The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed | _(no policy)_ |
+| RC.RP-06 | The end of incident recovery is declared based on criteria, and incident-related documentation is completed | _(no policy)_ |
 | RS.AN | Incident Analysis | _(no policy)_ |
 | RS.AN-01 | Notifications from detection systems are investigated | _(no policy)_ |
 | RS.AN-02 | The impact of the incident is understood | _(no policy)_ |
@@ -217,26 +232,36 @@ by hand; they will be overwritten.
 | RS.MI-03 | Newly identified vulnerabilities are mitigated or documented as accepted risks | _(no policy)_ |
 | RS.RP | Response Planning | _(no policy)_ |
 | RS.RP-01 | Response plan is executed during or after an incident | _(no policy)_ |
-| RC.CO | Incident Recovery Communication | _(no policy)_ |
-| RC.CO-01 | Public relations are managed | _(no policy)_ |
-| RC.CO-02 | Reputation is repaired after an incident | _(no policy)_ |
-| RC.CO-03 | Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders | _(no policy)_ |
-| RC.CO-04 | Public updates on incident recovery are shared using approved methods and messaging | _(no policy)_ |
-| RC.IM | Improvements | _(no policy)_ |
-| RC.IM-01 | Recovery plans incorporate lessons learned | _(no policy)_ |
-| RC.IM-02 | Recovery strategies are updated | _(no policy)_ |
-| RC.RP | Incident Recovery Plan Execution | _(no policy)_ |
-| RC.RP-01 | The recovery portion of the incident response plan is executed once initiated from the incident response process | _(no policy)_ |
-| RC.RP-02 | Recovery actions are selected, scoped, prioritized, and performed | _(no policy)_ |
-| RC.RP-03 | The integrity of backups and other restoration assets is verified before using them for restoration | _(no policy)_ |
-| RC.RP-04 | Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms | _(no policy)_ |
-| RC.RP-05 | The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed | _(no policy)_ |
-| RC.RP-06 | The end of incident recovery is declared based on criteria, and incident-related documentation is completed | _(no policy)_ |
 <!-- END: crosswalk-table nist_csf -->
 
 ## Coverage gaps
 
 <!-- BEGIN: crosswalk-gaps nist_csf -->
+- DE.AE — Adverse Event Analysis
+- DE.AE-01 — A baseline of network operations and expected data flows for users and systems is established and managed
+- DE.AE-02 — Potentially adverse events are analyzed to better understand associated activities
+- DE.AE-03 — Information is correlated from multiple sources
+- DE.AE-04 — The estimated impact and scope of adverse events are understood
+- DE.AE-05 — Incident alert thresholds are established
+- DE.AE-06 — Information on adverse events is provided to authorized staff and tools
+- DE.AE-07 — Cyber threat intelligence and other contextual information are integrated into the analysis
+- DE.AE-08 — Incidents are declared when adverse events meet the defined incident criteria
+- DE.CM — Continuous Monitoring
+- DE.CM-01 — Networks and network services are monitored to find potentially adverse events
+- DE.CM-02 — The physical environment is monitored to find potentially adverse events
+- DE.CM-03 — Personnel activity and technology usage are monitored to find potentially adverse events
+- DE.CM-04 — Malicious code is detected
+- DE.CM-05 — Unauthorized mobile code is detected
+- DE.CM-06 — External service provider activities and services are monitored to find potentially adverse events
+- DE.CM-07 — Monitoring for unauthorized personnel, connections, devices, and software is performed
+- DE.CM-08 — Vulnerability scans are performed
+- DE.CM-09 — Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events
+- DE.DP — Detection Processes
+- DE.DP-01 — Roles and responsibilities for detection are well defined to ensure accountability
+- DE.DP-02 — Detection activities comply with all applicable requirements
+- DE.DP-03 — Detection processes are tested
+- DE.DP-04 — Event detection information is communicated
+- DE.DP-05 — Detection processes are continuously improved
 - GV.OC — Organizational Context
 - GV.OC-01 — The organizational mission is understood and informs cybersecurity risk management
 - GV.OC-02 — Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered
@@ -386,31 +411,21 @@ by hand; they will be overwritten.
 - PR.PT-03 — The principle of least functionality is incorporated by configuring systems to provide only essential capabilities
 - PR.PT-04 — Communications and control networks are protected
 - PR.PT-05 — Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations
-- DE.AE — Adverse Event Analysis
-- DE.AE-01 — A baseline of network operations and expected data flows for users and systems is established and managed
-- DE.AE-02 — Potentially adverse events are analyzed to better understand associated activities
-- DE.AE-03 — Information is correlated from multiple sources
-- DE.AE-04 — The estimated impact and scope of adverse events are understood
-- DE.AE-05 — Incident alert thresholds are established
-- DE.AE-06 — Information on adverse events is provided to authorized staff and tools
-- DE.AE-07 — Cyber threat intelligence and other contextual information are integrated into the analysis
-- DE.AE-08 — Incidents are declared when adverse events meet the defined incident criteria
-- DE.CM — Continuous Monitoring
-- DE.CM-01 — Networks and network services are monitored to find potentially adverse events
-- DE.CM-02 — The physical environment is monitored to find potentially adverse events
-- DE.CM-03 — Personnel activity and technology usage are monitored to find potentially adverse events
-- DE.CM-04 — Malicious code is detected
-- DE.CM-05 — Unauthorized mobile code is detected
-- DE.CM-06 — External service provider activities and services are monitored to find potentially adverse events
-- DE.CM-07 — Monitoring for unauthorized personnel, connections, devices, and software is performed
-- DE.CM-08 — Vulnerability scans are performed
-- DE.CM-09 — Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events
-- DE.DP — Detection Processes
-- DE.DP-01 — Roles and responsibilities for detection are well defined to ensure accountability
-- DE.DP-02 — Detection activities comply with all applicable requirements
-- DE.DP-03 — Detection processes are tested
-- DE.DP-04 — Event detection information is communicated
-- DE.DP-05 — Detection processes are continuously improved
+- RC.CO — Incident Recovery Communication
+- RC.CO-01 — Public relations are managed
+- RC.CO-02 — Reputation is repaired after an incident
+- RC.CO-03 — Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders
+- RC.CO-04 — Public updates on incident recovery are shared using approved methods and messaging
+- RC.IM — Improvements
+- RC.IM-01 — Recovery plans incorporate lessons learned
+- RC.IM-02 — Recovery strategies are updated
+- RC.RP — Incident Recovery Plan Execution
+- RC.RP-01 — The recovery portion of the incident response plan is executed once initiated from the incident response process
+- RC.RP-02 — Recovery actions are selected, scoped, prioritized, and performed
+- RC.RP-03 — The integrity of backups and other restoration assets is verified before using them for restoration
+- RC.RP-04 — Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms
+- RC.RP-05 — The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed
+- RC.RP-06 — The end of incident recovery is declared based on criteria, and incident-related documentation is completed
 - RS.AN — Incident Analysis
 - RS.AN-01 — Notifications from detection systems are investigated
 - RS.AN-02 — The impact of the incident is understood
@@ -441,19 +456,4 @@ by hand; they will be overwritten.
 - RS.MI-03 — Newly identified vulnerabilities are mitigated or documented as accepted risks
 - RS.RP — Response Planning
 - RS.RP-01 — Response plan is executed during or after an incident
-- RC.CO — Incident Recovery Communication
-- RC.CO-01 — Public relations are managed
-- RC.CO-02 — Reputation is repaired after an incident
-- RC.CO-03 — Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders
-- RC.CO-04 — Public updates on incident recovery are shared using approved methods and messaging
-- RC.IM — Improvements
-- RC.IM-01 — Recovery plans incorporate lessons learned
-- RC.IM-02 — Recovery strategies are updated
-- RC.RP — Incident Recovery Plan Execution
-- RC.RP-01 — The recovery portion of the incident response plan is executed once initiated from the incident response process
-- RC.RP-02 — Recovery actions are selected, scoped, prioritized, and performed
-- RC.RP-03 — The integrity of backups and other restoration assets is verified before using them for restoration
-- RC.RP-04 — Critical mission functions and cybersecurity risk management are considered to establish post-incident operational norms
-- RC.RP-05 — The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed
-- RC.RP-06 — The end of incident recovery is declared based on criteria, and incident-related documentation is completed
 <!-- END: crosswalk-gaps nist_csf -->

@@ -23,8 +23,18 @@ def validate(catalog: dict, schema_path: Path) -> list[str]:
 
 
 def save(per_framework: dict[str, FrameworkData], path: Path) -> None:
-    """Write the merged catalog to `path`. Overwrites existing content."""
-    payload = {"frameworks": {name: fd.to_json() for name, fd in per_framework.items()}}
+    """Write the merged catalog to `path`. Overwrites existing content.
+
+    Frameworks appear in REGISTRY order (insertion-stable for Python 3.7+).
+    Within each framework, controls are sorted by id so refresh PRs produce
+    reviewable diffs even when an upstream fetcher re-orders entries.
+    """
+    out_frameworks: dict[str, dict] = {}
+    for name, fd in per_framework.items():
+        framework_json = fd.to_json()
+        framework_json["controls"] = sorted(framework_json["controls"], key=lambda c: c["id"])
+        out_frameworks[name] = framework_json
+    payload = {"frameworks": out_frameworks}
     path.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n")
 
 
