@@ -165,5 +165,135 @@ def validate_deploy(repo_root_opt: Path | None) -> None:
     click.echo(f"OK: deploy/ manifests valid ({root / 'deploy'})")
 
 
+@main.command("check-reviews")
+@click.option("--today", "today_opt", type=click.DateTime(formats=["%Y-%m-%d"]),
+              default=None, help="Override today (default: actual date).")
+@click.option("--dry-run", is_flag=True, default=False)
+@click.option("--repo-root", "repo_root_opt",
+              type=click.Path(exists=True, file_okay=False, path_type=Path),
+              default=None)
+def check_reviews(today_opt, dry_run: bool, repo_root_opt: Path | None) -> None:
+    """List effective policies whose review_cycle has elapsed.
+
+    The CI workflow pipes this output to `gh issue create` to file Issues.
+    """
+    from datetime import date as _date
+
+    from ggi_policy import lifecycle
+
+    root = (repo_root_opt or repo_root()).resolve()
+    today = today_opt.date() if today_opt else _date.today()
+    overdue = lifecycle.overdue_reviews(root / "policies", today=today)
+
+    if not overdue:
+        click.echo(f"OK: no overdue reviews on {today.isoformat()}")
+        return
+
+    for entry in overdue:
+        title = f"Review Due: {entry['id']}"
+        body = (
+            f"Policy {entry['id']} (\"{entry['title']}\") was last reviewed "
+            f"on {entry['last_reviewed']} with a {entry['review_cycle']} review cycle. "
+            f"Owner: {entry['owner']}. "
+            f"Open a PR that bumps last_reviewed (re-attestation)."
+        )
+        if dry_run:
+            click.echo(f"[dry-run] would create issue: {title}")
+        else:
+            # Tab-separated so the workflow can `awk` cleanly.
+            click.echo(f"OVERDUE\t{title}\t{entry['owner']}\t{body}")
+
+
+@main.command("notify-effective")
+@click.option("--today", "today_opt", type=click.DateTime(formats=["%Y-%m-%d"]),
+              default=None)
+@click.option("--dry-run", is_flag=True, default=False)
+@click.option("--repo-root", "repo_root_opt",
+              type=click.Path(exists=True, file_okay=False, path_type=Path),
+              default=None)
+@click.option("--webhook-url", "webhook_url_opt",
+              envvar="TEAMS_POLICY_WEBHOOK", default=None,
+              help="Teams incoming-webhook URL (defaults to $TEAMS_POLICY_WEBHOOK).")
+def notify_effective(today_opt, dry_run: bool, repo_root_opt: Path | None,
+                     webhook_url_opt: str | None) -> None:
+    """Post a Teams notification for each policy whose effective_date is today."""
+    from datetime import date as _date
+
+    from ggi_policy import lifecycle, teams
+
+    root = (repo_root_opt or repo_root()).resolve()
+    today = today_opt.date() if today_opt else _date.today()
+    arriving = lifecycle.effective_today(root / "policies", today=today)
+
+    if not arriving:
+        click.echo(f"OK: no policies become effective on {today.isoformat()}")
+        return
+
+    if not webhook_url_opt and not dry_run:
+        click.echo("skipped: TEAMS_POLICY_WEBHOOK not set", err=True)
+        return
+
+    for entry in arriving:
+        title = f"Policy now effective: {entry['id']}"
+        body = (
+            f"**{entry['title']}** (v{entry['version']}) is effective as of "
+            f"{entry['effective_date']}. Owner: {entry['owner']}."
+        )
+        if dry_run:
+            click.echo(f"[dry-run] would post: {title} | {body}")
+        else:
+            teams.post_card(webhook_url_opt, title=title, body=body)
+            click.echo(f"posted: {title}")
+
+
+@main.command("check-exceptions")
+@click.option("--today", "today_opt", type=click.DateTime(formats=["%Y-%m-%d"]),
+              default=None)
+@click.option("--dry-run", is_flag=True, default=False)
+@click.option("--repo-root", "repo_root_opt",
+              type=click.Path(exists=True, file_okay=False, path_type=Path),
+              default=None)
+@click.option("--webhook-url", "webhook_url_opt",
+              envvar="TEAMS_POLICY_WEBHOOK", default=None)
+def check_exceptions(today_opt, dry_run: bool, repo_root_opt: Path | None,
+                     webhook_url_opt: str | None) -> None:
+    """Post a Teams notification for active exceptions hitting an expiration milestone."""
+    from datetime import date as _date
+
+    from ggi_policy import lifecycle, teams
+
+    root = (repo_root_opt or repo_root()).resolve()
+    today = today_opt.date() if today_opt else _date.today()
+    notices = lifecycle.expiring_exceptions(root / "exceptions", today=today)
+
+    if not notices:
+        click.echo(f"OK: no exception notifications for {today.isoformat()}")
+        return
+
+    if not webhook_url_opt and not dry_run:
+        click.echo("skipped: TEAMS_POLICY_WEBHOOK not set", err=True)
+        return
+
+    for n in notices:
+        if n["expired"]:
+            title = f"Exception EXPIRED: {n['id']}"
+            body = (
+                f"Cites {n['policy_ref']}. Approver: {n['approver']}. "
+                f"Expired on {n['expires']} ({-n['days_until_expiry']} day(s) ago). "
+                f"This exception must be renewed via PR or revoked."
+            )
+        else:
+            title = f"Exception expiring in {n['days_until_expiry']} day(s): {n['id']}"
+            body = (
+                f"Cites {n['policy_ref']}. Approver: {n['approver']}. "
+                f"Expires on {n['expires']}."
+            )
+        if dry_run:
+            click.echo(f"[dry-run] would post: {title} | {body}")
+        else:
+            teams.post_card(webhook_url_opt, title=title, body=body)
+            click.echo(f"posted: {title}")
+
+
 if __name__ == "__main__":
     main()

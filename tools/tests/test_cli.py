@@ -123,3 +123,105 @@ def test_build_site_propagates_failure(monkeypatch, tmp_path: Path) -> None:
     result = runner.invoke(main, ["build-site", "--repo-root", str(tmp_path)])
     assert result.exit_code == 1
     assert "FAIL" in result.output
+
+
+def test_check_reviews_dry_run_outputs_titles(fixtures_dir: Path) -> None:
+    """The fixture's sample.md is overdue on 2026-05-15. --dry-run prints a
+    'would create issue' line and exits 0."""
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "check-reviews",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-05-15",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0, result.output
+    assert "[dry-run] would create issue: Review Due: POL-IAM-SAMPLE" in result.output
+
+
+def test_check_reviews_clean_when_nothing_overdue(fixtures_dir: Path) -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "check-reviews",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-04-30",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0
+    assert "OK: no overdue reviews" in result.output
+
+
+def test_notify_effective_dry_run(fixtures_dir: Path) -> None:
+    """Sample fixture has effective_date 2026-06-01."""
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "notify-effective",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-06-01",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0, result.output
+    assert "[dry-run] would post" in result.output
+    assert "POL-IAM-SAMPLE" in result.output
+
+
+def test_notify_effective_skipped_without_webhook(fixtures_dir: Path) -> None:
+    """No webhook URL, not dry-run: log and exit 0 (no traceback)."""
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "notify-effective",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-06-01",
+    ], env={"TEAMS_POLICY_WEBHOOK": ""})
+    assert result.exit_code == 0
+    assert "skipped" in result.output
+
+
+def test_notify_effective_clean_when_no_match(fixtures_dir: Path) -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "notify-effective",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-06-02",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0
+    assert "no policies become effective" in result.output
+
+
+def test_check_exceptions_at_30_day_milestone(fixtures_dir: Path) -> None:
+    """Sample exception expires 2026-10-15. On 2026-09-15 it's the 30-day milestone."""
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "check-exceptions",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-09-15",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0, result.output
+    assert "expiring in 30 day(s)" in result.output
+    assert "EXC-2026-001-SAMPLE" in result.output
+
+
+def test_check_exceptions_after_expiry(fixtures_dir: Path) -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "check-exceptions",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-10-16",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0, result.output
+    assert "EXPIRED" in result.output
+
+
+def test_check_exceptions_silent_on_non_milestone_day(fixtures_dir: Path) -> None:
+    runner = CliRunner()
+    result = runner.invoke(main, [
+        "check-exceptions",
+        "--repo-root", str(fixtures_dir / "lifecycle"),
+        "--today", "2026-09-16",
+        "--dry-run",
+    ])
+    assert result.exit_code == 0
+    assert "no exception notifications" in result.output
