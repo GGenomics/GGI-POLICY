@@ -14,7 +14,7 @@
 
 - Phase 2 is merged (HEAD on `origin/main` ≥ `0359b6f`). 72 unit tests pass; `framework-controls.json` has 2,344 controls; `crosswalks/*.md` are populated and idempotent.
 - Reference: design doc at [docs/superpowers/specs/2026-05-02-policy-doc-framework-design.md](../specs/2026-05-02-policy-doc-framework-design.md) §8.4 (site hosting), §6.5 (reverse direction crosswalk), §3 (decisions table — Publishing).
-- No external systems must be live for Phase 3. Phase 4 will require: Entra app registration, DNS for `policy.internal.ggenomics.com`, ingress/oauth2-proxy in k8s, Flux image automation watching GHCR. Phase 3 stops at "image is in GHCR."
+- No external systems must be live for Phase 3. Phase 4 will require: Entra app registration, DNS for `policy.ggenomics.internal`, ingress/oauth2-proxy in k8s, Flux image automation watching GHCR. Phase 3 stops at "image is in GHCR."
 - The Phase 2 final review noted three carry-forward items the Phase 3 work should keep in mind:
   1. HIPAA XML parser is untested. Don't change it in this phase.
   2. Per-policy framework table (§6.5) is the framework-table hook in this plan.
@@ -105,7 +105,7 @@ Run `uv sync` to refresh the lockfile. `uv.lock` will be updated.
 ```yaml
 site_name: GGI Policy
 site_description: GGenomics policy library — data and application governance, cybersecurity.
-site_url: https://policy.internal.ggenomics.com/
+site_url: https://policy.ggenomics.internal/
 repo_url: https://github.com/GGenomics/GGI-POLICY
 edit_uri: edit/main/
 
@@ -1144,7 +1144,7 @@ Phase 4 (k8s) explicitly handles deployment + auth. Phase 3 ends at "image is in
 **Carry-forward to Phase 4:**
 
 - Image is in GHCR but unused. Phase 4 wires Flux `ImageRepository` + `ImagePolicy` watching `ghcr.io/ggenomics/ggi-policy-site` to auto-update `apps/policy-docs/kustomization.yaml` in `GGenomics/ggi_internals`.
-- The `site_url` in `mkdocs.yml` is `https://policy.internal.ggenomics.com/`; that DNS doesn't exist yet. Phase 4 owns the DNS + ingress + oauth2-proxy work.
+- The `site_url` in `mkdocs.yml` is `https://policy.ggenomics.internal/`; that DNS doesn't exist yet. Phase 4 owns the DNS + ingress + oauth2-proxy work.
 - The Phase 2 carry-forward items (HIPAA XML test coverage, deterministic catalog sort) remain open. Neither blocks Phase 3.
 
 **Carry-forward from this plan into a hypothetical Phase 3.5:**

@@ -473,12 +473,12 @@ Flux **image automation** (`image-reflector-controller` + `image-automation-cont
 
 **Authentication:**
 
-- New Entra app registration (`ggi-policy-docs`) with redirect URI `https://policy.internal.ggenomics.com/oauth2/callback`.
+- New Entra app registration (`ggi-policy-docs`) with redirect URI `https://policy.ggenomics.internal/oauth2/callback`.
 - ingress-nginx + oauth2-proxy bound to the Entra OIDC issuer.
 - ingress annotations route requests through oauth2-proxy:
   ```yaml
   nginx.ingress.kubernetes.io/auth-url: "https://oauth2-proxy.<ns>.svc.cluster.local/oauth2/auth"
-  nginx.ingress.kubernetes.io/auth-signin: "https://policy.internal.ggenomics.com/oauth2/start?rd=$escaped_request_uri"
+  nginx.ingress.kubernetes.io/auth-signin: "https://policy.ggenomics.internal/oauth2/start?rd=$escaped_request_uri"
   ```
 - SharePoint and Teams iframe embeds piggyback on the existing Entra session — no extra sign-in.
 
@@ -564,7 +564,7 @@ These are tracked here so they don't get lost when implementation begins:
 
 1. **GitHub teams creation.** Six teams under `@ggenomics/` (`ciso`, `it-director`, `data-steward`, `hr-director`, `privacy-officer`, `policy-stewards`) need to be created and populated before the first PR depending on CODEOWNERS lands.
 2. **Entra app registration** for `ggi-policy-docs` must be created in the GGI tenant with the correct redirect URI and group claims, and its credentials placed in Vault under a path matching the `airflow` pattern.
-3. **SharePoint/Teams embed pages.** Locations and ownership of the SharePoint and Teams pages that will host iframes referencing `https://policy.internal.ggenomics.com` need to be decided with stakeholders.
+3. **SharePoint/Teams embed pages.** Locations and ownership of the SharePoint and Teams pages that will host iframes referencing `https://policy.ggenomics.internal` need to be decided with stakeholders.
 4. **External `#policy-updates` Teams channel.** Channel must exist and a webhook must be issued; the URL goes into the `TEAMS_POLICY_WEBHOOK` GitHub Actions secret on this repo.
 5. **Glossary seeding.** `glossary/terms.md` needs an initial set of controlled terms (M365 Group, Distribution Group, Mail-enabled Security Group, Security Group, Shared Mailbox, Conditional Access, PIM, etc.) to anchor the first wave of policies.
 6. **DNS for `policy.ggenomics.internal`** must be allocated and pointed at the cluster ingress.

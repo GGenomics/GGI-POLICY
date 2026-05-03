@@ -1,6 +1,6 @@
 site_name: GGI Policy
 site_description: GGenomics policy library — data and application governance, cybersecurity.
-site_url: https://policy.internal.ggenomics.com/
+site_url: https://policy.ggenomics.internal/
 repo_url: https://github.com/GGenomics/GGI-POLICY
 edit_uri: edit/main/
 
