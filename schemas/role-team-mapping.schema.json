@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ggenomics.com/schemas/role-team-mapping.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["roles"],
+  "properties": {
+    "roles": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "pattern": "^@[A-Za-z0-9_-]+/[A-Za-z0-9_-]+$" }
+    }
+  }
+}

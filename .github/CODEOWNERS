@@ -1,0 +1,17 @@
+# Each policy folder is owned by the teams listed for that domain in §7.3
+/policies/identity-and-access/      @ggenomics/ciso @ggenomics/it-director
+/policies/data/                     @ggenomics/ciso @ggenomics/data-steward
+/policies/privacy/                  @ggenomics/ciso @ggenomics/privacy-officer
+/policies/human-resources/          @ggenomics/ciso @ggenomics/hr-director
+/policies/applications/             @ggenomics/ciso @ggenomics/it-director
+/policies/endpoints/                @ggenomics/ciso @ggenomics/it-director
+/policies/network/                  @ggenomics/ciso @ggenomics/it-director
+/policies/incident-response/        @ggenomics/ciso
+/policies/vendor-and-third-party/   @ggenomics/ciso
+/policies/security-operations/      @ggenomics/ciso
+/policies/business-continuity/      @ggenomics/ciso @ggenomics/it-director
+/policies/meta/                     @ggenomics/ciso @ggenomics/it-director @ggenomics/policy-stewards
+/exceptions/                        @ggenomics/ciso
+/schemas/                           @ggenomics/ciso @ggenomics/policy-stewards
+/tools/                             @ggenomics/policy-stewards
+/crosswalks/                        @ggenomics/policy-stewards

@@ -1,0 +1,7 @@
+roles:
+  CISO:             "@ggenomics/ciso"
+  IT Director:      "@ggenomics/it-director"
+  Data Steward:     "@ggenomics/data-steward"
+  HR Director:      "@ggenomics/hr-director"
+  Privacy Officer:  "@ggenomics/privacy-officer"
+  Policy Stewards:  "@ggenomics/policy-stewards"
