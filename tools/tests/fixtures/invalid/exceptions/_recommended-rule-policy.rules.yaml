@@ -1,0 +1,3 @@
+policy_id: POL-DAT-TEST
+rules:
+  - { id: R1, statement: "soft rule", type: flag, severity: recommended }

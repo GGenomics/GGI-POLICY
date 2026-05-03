@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ggenomics.com/schemas/exception.schema.json",
+  "title": "GGI policy exception",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "policy_ref", "requested_by", "approver",
+    "approved_date", "effective_date", "expires", "status",
+    "compensating_control", "risk_acceptance"
+  ],
+  "properties": {
+    "id":              { "type": "string", "pattern": "^EXC-\\d{4}-\\d{3}-[A-Z0-9-]+$" },
+    "policy_ref":      { "type": "string", "pattern": "^POL-[A-Z]+-[A-Z0-9-]+\\.R\\d+$" },
+    "requested_by":    { "type": "string", "format": "email" },
+    "approver":        { "type": "string", "minLength": 1 },
+    "approved_date":   { "type": "string", "format": "date" },
+    "effective_date":  { "type": "string", "format": "date" },
+    "expires":         { "type": "string", "format": "date" },
+    "status":          { "enum": ["active", "expired", "revoked"] },
+    "compensating_control": { "type": "string", "minLength": 1 },
+    "risk_acceptance":      { "type": "string", "minLength": 1 }
+  }
+}
