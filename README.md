@@ -8,3 +8,17 @@ governance and cybersecurity.
 
 This repo is in early bring-up. See `CLAUDE.md` for AI-agent guidance once it
 is fleshed out (Phase 6).
+
+## Contributing on Windows
+
+The MkDocs site uses three symlinks under `docs/` (`policies`, `crosswalks`,
+`glossary`) so existing root-level content paths render under the docs root.
+Git for Windows does not materialize symlinks by default. Run this once before
+cloning:
+
+```sh
+git config --global core.symlinks true
+```
+
+If you've already cloned, `git checkout main -- docs/` after enabling the
+config will re-create the symlinks.

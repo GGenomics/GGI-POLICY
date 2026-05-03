@@ -48,5 +48,7 @@ markdown_extensions:
 extra_css:
   - _stylesheets/extra.css
 
+# Note: `hooks:` paths are relative to the project directory (where this
+# mkdocs.yml lives), unlike `extra_css:` which is relative to docs_dir.
 hooks:
   - docs/_hooks/policy_page.py
