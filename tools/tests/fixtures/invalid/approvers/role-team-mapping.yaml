@@ -1,3 +1,4 @@
 roles:
-  CISO:        "@ggenomics/ciso"
-  IT Director: "@ggenomics/it-director"
+  CISO:         "@ggenomics/ciso"
+  IT Director:  "@ggenomics/it-director"
+  Data Steward: "@ggenomics/data-steward"
