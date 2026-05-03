@@ -47,5 +47,6 @@ jobs:
           tags: |
             ghcr.io/ggenomics/ggi-policy-site:latest
             ghcr.io/ggenomics/ggi-policy-site:main-${{ github.sha }}
+            ghcr.io/ggenomics/ggi-policy-site:main-${{ github.run_number }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
