@@ -22,6 +22,10 @@ def run(repo_root: Path, config_root: Path | None = None) -> ValidationReport:
     co_rules = codeowners.parse(config_root / ".github" / "CODEOWNERS")
     role_map = role_team_map.load(config_root / "schemas" / "role-team-mapping.yaml")
 
+    from ggi_policy import controls as controls_io
+    catalog_path = config_root / "schemas" / "framework-controls.json"
+    catalog = controls_io.load(catalog_path) if catalog_path.exists() else {"frameworks": {}}
+
     policies_root = repo_root / "policies"
     rule_index: dict[str, dict] = {}
     policies = list(io.iter_policies(policies_root)) if policies_root.exists() else []
@@ -29,7 +33,7 @@ def run(repo_root: Path, config_root: Path | None = None) -> ValidationReport:
     for policy in policies:
         fm.check(policy, report)
         consistency.check(policy, policies_root, DOMAIN_TO_FOLDER, report)
-        tags.check(policy, report)
+        tags.check(policy, catalog, report)
         approvers.check(policy, co_rules, role_map, repo_root, report)
         rules = io.load_rules(policy.path)
         if rules:

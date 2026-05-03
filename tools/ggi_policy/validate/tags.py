@@ -1,33 +1,35 @@
-import re
+"""Per-framework tag membership validation.
+
+Phase 1 used regex format checks; Phase 2 upgrades to membership lookups against
+schemas/framework-controls.json so that `PR.AC-99` (correct format, doesn't
+exist) is caught.
+"""
 
 from ggi_policy.io import LoadedPolicy
 from ggi_policy.result import ValidationFinding, ValidationReport
 
 
-# NOTE: These patterns are intentionally duplicated from
-# schemas/policy-frontmatter.schema.json (the public contract for AI agents).
-# If you change a pattern here, update the schema too, and vice versa.
-# Consolidation into a single source of truth is deferred to Phase 2.
-PATTERNS = {
-    "nist_csf":     re.compile(r"^(GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d+$"),
-    "cis":          re.compile(r"^\d+(\.\d+)?$"),
-    "soc2":         re.compile(r"^(CC|A|PI|C|P)\d+\.\d+$"),
-    "hipaa":        re.compile(r"^164\.\d{3}\([a-z]\)(\(\d+\))?(\([ivx]+\))?$"),
-    "nist_800_53":  re.compile(r"^[A-Z]{2}-\d+(\(\d+\))?$"),
-    "nist_800_171": re.compile(r"^\d+\.\d+\.\d+$"),
-}
+def check(policy: LoadedPolicy, catalog: dict, report: ValidationReport) -> None:
+    """`catalog` is the parsed schemas/framework-controls.json document."""
+    framework_index: dict[str, set[str]] = {
+        framework: {c["id"] for c in fw.get("controls", [])}
+        for framework, fw in catalog.get("frameworks", {}).items()
+    }
 
-
-def check(policy: LoadedPolicy, report: ValidationReport) -> None:
     for framework, values in policy.metadata.get("frameworks", {}).items():
-        pattern = PATTERNS.get(framework)
-        if pattern is None:
-            continue  # frontmatter schema covers unknown framework keys
+        known = framework_index.get(framework)
+        if known is None:
+            # Unknown framework key — covered by the frontmatter schema's
+            # additionalProperties: false; no extra finding here.
+            continue
         for value in values or []:
-            if not pattern.match(str(value)):
+            if str(value) not in known:
                 report.add(ValidationFinding(
-                    code="TAG_FORMAT_INVALID",
+                    code="TAG_UNKNOWN",
                     path=policy.path,
-                    message=f"frameworks.{framework}: {value!r} does not match expected format",
+                    message=(
+                        f"frameworks.{framework}: {value!r} is not in the "
+                        f"canonical {framework} catalog"
+                    ),
                     locator=f"frameworks/{framework}",
                 ))

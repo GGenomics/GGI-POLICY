@@ -18,12 +18,12 @@ applies_to:
 supersedes: []
 related: []
 frameworks:
-  nist_csf:     [WRONGFMT-1]
+  nist_csf:     [PR.AC-99]
   cis:          ["5.4", "6.1"]
   soc2:         [CC6.1]
-  hipaa:        ["164.308(a)(4)"]
+  hipaa:        ["164.308(a)(4)(i)"]
   nist_800_53:  [AC-2]
-  nist_800_171: ["3.1.1"]
+  nist_800_171: ["SP_800_171_03.01.01"]
 external_references:
   - https://learn.microsoft.com/entra/identity/users/groups-naming-policy
 ---
