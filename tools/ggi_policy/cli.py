@@ -28,7 +28,13 @@ def validate(repo_root_opt: Path | None) -> None:
         click.echo(f"OK: validated {root}")
         sys.exit(0)
     for finding in report.findings:
-        rel = finding.path.relative_to(root) if finding.path.is_absolute() else finding.path
+        try:
+            rel = finding.path.relative_to(root) if finding.path.is_absolute() else finding.path
+        except ValueError:
+            # Path is absolute but lives outside root (e.g., a programmatic call
+            # passed an external reference). Fall back to the absolute path so
+            # the rest of the findings still render.
+            rel = finding.path
         click.echo(f"{rel}: [{finding.code}] {finding.message}", err=True)
     click.echo(f"\nFAIL: {len(report.findings)} finding(s)", err=True)
     sys.exit(1)

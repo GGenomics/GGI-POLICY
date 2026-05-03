@@ -43,9 +43,14 @@ def run(repo_root: Path, config_root: Path | None = None) -> ValidationReport:
             sidecar_path = policy.path.parent / f"{policy.path.stem}.rules.yaml"
             rules_sidecar.check(sidecar_path, rules, report)
             removed_rules.check(sidecar_path, rules, report)
-            for rule in rules.get("rules", []):
-                if isinstance(rule, dict) and "id" in rule:
-                    rule_index[f"{rules['policy_id']}.{rule['id']}"] = rule
+            # rules_sidecar.check records a finding if policy_id is missing; we still
+            # want validation to continue, so guard the index build defensively rather
+            # than crashing the whole run on a malformed sidecar.
+            policy_id = rules.get("policy_id")
+            if policy_id:
+                for rule in rules.get("rules", []):
+                    if isinstance(rule, dict) and "id" in rule:
+                        rule_index[f"{policy_id}.{rule['id']}"] = rule
 
     exceptions_root = repo_root / "exceptions"
     if exceptions_root.exists():
