@@ -1,5 +1,11 @@
-"""MkDocs hook that turns a policy's YAML frontmatter into a top metadata strip
-and a bottom 'Framework alignment' table."""
+"""MkDocs hook that prepends a metadata strip and appends a 'Framework alignment'
+table to every policy page.
+
+In production MkDocs strips YAML frontmatter from the markdown before
+`on_page_markdown` fires, so detection of a "policy" page reads `page.meta`,
+not the markdown source itself. The pure `transform(markdown, meta, page_path)`
+helper is unit-testable; production calls it via `on_page_markdown`.
+"""
 
 from __future__ import annotations
 
@@ -62,25 +68,42 @@ def _render_framework_table(meta: dict, page_path: str) -> str:
     )
 
 
-def transform(markdown: str, page_path: str) -> str:
-    """Return the markdown with frontmatter stripped, a metadata strip prepended,
-    and a Framework alignment table appended. Non-policy pages pass through."""
+def _strip_frontmatter(markdown: str) -> tuple[dict | None, str]:
+    """If the markdown starts with `---`-fenced YAML, return (parsed_meta, body).
+    Otherwise return (None, markdown). Used by `transform` when called from a
+    test that supplies the raw markdown including frontmatter; in production,
+    MkDocs strips frontmatter before this hook fires."""
     m = _FRONTMATTER_RE.match(markdown)
     if not m:
-        return markdown
+        return None, markdown
     try:
-        meta = yaml.safe_load(m.group(1)) or {}
+        parsed = yaml.safe_load(m.group(1))
     except yaml.YAMLError:
-        return markdown
+        return None, markdown
+    body = markdown[m.end():].lstrip("\n")
+    return (parsed if isinstance(parsed, dict) else None), body
+
+
+def transform(markdown: str, meta: dict | None, page_path: str) -> str:
+    """Return markdown with a metadata strip prepended and a Framework alignment
+    table appended, when ``meta['id']`` starts with ``POL-``. Other pages pass
+    through unchanged.
+
+    If ``meta`` is None and the markdown still has a frontmatter block, the
+    helper parses it. This keeps unit tests simple while letting the production
+    adapter pass ``page.meta`` directly.
+    """
+    if meta is None:
+        meta, markdown = _strip_frontmatter(markdown)
     if not isinstance(meta, dict) or not str(meta.get("id", "")).startswith("POL-"):
         return markdown
-    body = markdown[m.end():].lstrip("\n")
     meta_strip = _render_meta_strip(meta)
     framework_table = _render_framework_table(meta, page_path)
-    return f"{meta_strip}\n{body.rstrip()}\n\n{framework_table}".rstrip() + "\n"
+    return f"{meta_strip}\n{markdown.rstrip()}\n\n{framework_table}".rstrip() + "\n"
 
 
 def on_page_markdown(markdown: str, *, page=None, **kwargs) -> str:
     if page is None:
         return markdown
-    return transform(markdown, page.file.src_path)
+    meta = dict(page.meta) if page.meta else None
+    return transform(markdown, meta, page.file.src_path)

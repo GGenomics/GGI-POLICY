@@ -16,20 +16,23 @@ _spec.loader.exec_module(policy_page)
 def test_policy_page_renders_metadata_strip_and_framework_table(fixtures_dir: Path) -> None:
     src = (fixtures_dir / "site/policy-input.md").read_text()
     expected = (fixtures_dir / "site/policy-expected.md").read_text()
-    out = policy_page.transform(src, page_path="policies/identity-and-access/group-naming.md")
+    out = policy_page.transform(src, None, page_path="policies/identity-and-access/group-naming.md")
     assert out.strip() == expected.strip()
 
 
 def test_non_policy_page_passes_through() -> None:
     plain = "# Plain page\n\nNo frontmatter here.\n"
-    out = policy_page.transform(plain, page_path="some/page.md")
+    out = policy_page.transform(plain, None, page_path="some/page.md")
     assert out == plain
 
 
-def test_page_with_frontmatter_but_no_pol_id_passes_through() -> None:
+def test_page_with_frontmatter_but_no_pol_id_does_not_get_policy_treatment() -> None:
     src = "---\ntitle: Crosswalks\n---\n\n# Crosswalks index\n"
-    out = policy_page.transform(src, page_path="crosswalks/index.md")
-    assert out == src
+    out = policy_page.transform(src, None, page_path="crosswalks/index.md")
+    # No metadata strip and no framework table; the body remains.
+    assert "!!! info" not in out
+    assert "Framework alignment" not in out
+    assert "# Crosswalks index" in out
 
 
 def test_relative_crosswalk_path_depth_for_top_level_meta_policy() -> None:
@@ -43,7 +46,7 @@ def test_relative_crosswalk_path_depth_for_top_level_meta_policy() -> None:
         "external_references: []\n"
         "---\n# Body\n"
     )
-    out = policy_page.transform(src, page_path="policies/meta/doc-framework.md")
+    out = policy_page.transform(src, None, page_path="policies/meta/doc-framework.md")
     assert "(../../crosswalks/nist-csf.md)" in out
 
 
@@ -58,6 +61,6 @@ def test_skip_frameworks_with_empty_lists() -> None:
         "external_references: []\n"
         "---\n# Body\n"
     )
-    out = policy_page.transform(src, page_path="policies/identity-and-access/x.md")
+    out = policy_page.transform(src, None, page_path="policies/identity-and-access/x.md")
     assert "NIST CSF 2.0" in out
     assert "CIS Controls v8" not in out
