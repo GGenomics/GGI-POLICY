@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DLPSTEXTCLASS>
+  <DIV5 TYPE="CHAPTER" N="A" NODE="45:1.0.1">
+    <DIV6 TYPE="SUBCHAP" N="C">
+      <DIV7 TYPE="PART" N="164">
+        <HEAD>PART 164—SECURITY AND PRIVACY</HEAD>
+        <DIV8 TYPE="SECTION" N="164.308">
+          <HEAD>§ 164.308 Administrative safeguards.</HEAD>
+          <P>(a) <I>Standards.</I></P>
+          <P>(a)(1) <I>Security management process.</I> Implement policies and procedures.</P>
+          <P>(a)(4) <I>Information access management.</I> Implement policies and procedures for authorizing access to electronic protected health information.</P>
+        </DIV8>
+        <DIV8 TYPE="SECTION" N="164.312">
+          <HEAD>§ 164.312 Technical safeguards.</HEAD>
+          <P>(a)(1) <I>Access control.</I> Implement technical policies and procedures.</P>
+          <P>(a)(2)(i) <I>Unique user identification.</I> Assign a unique name and/or number for identifying and tracking user identity.</P>
+        </DIV8>
+      </DIV7>
+    </DIV6>
+  </DIV5>
+</DLPSTEXTCLASS>
