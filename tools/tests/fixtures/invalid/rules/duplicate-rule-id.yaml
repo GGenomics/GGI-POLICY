@@ -1,0 +1,4 @@
+policy_id: POL-IAM-TEST
+rules:
+  - { id: R1, statement: "first",  type: flag, severity: required }
+  - { id: R1, statement: "second", type: flag, severity: required }

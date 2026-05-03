@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ggenomics.com/schemas/policy-rules.schema.json",
+  "title": "GGI policy sidecar rules",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["policy_id", "rules"],
+  "properties": {
+    "policy_id": { "type": "string", "pattern": "^POL-[A-Z]+-[A-Z0-9-]+$" },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/rule" }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "required": ["id", "statement", "type", "severity"],
+      "properties": {
+        "id":        { "type": "string", "pattern": "^R\\d+$" },
+        "statement": { "type": "string", "minLength": 1 },
+        "severity":  { "enum": ["required", "recommended"] },
+        "status":    { "enum": ["active", "removed"], "default": "active" },
+        "removed_in":{ "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "type":      { "enum": ["flag","setting","pattern","decision_table","allowed_values","forbidden_values"] },
+        "applies_to":{ "type": "object" },
+        "pattern":   { "type": "string" },
+        "rows":      { "type": "array" },
+        "inputs":    { "type": "array", "items": { "type": "string" } },
+        "expected":  { "type": "object" },
+        "value":     {},
+        "allowed":   { "type": "array" },
+        "forbidden": { "type": "array" },
+        "examples":  { "type": "object" }
+      },
+      "allOf": [
+        { "if": { "properties": { "type": { "const": "pattern" } } },
+          "then": { "required": ["pattern"] } },
+        { "if": { "properties": { "type": { "const": "decision_table" } } },
+          "then": { "required": ["inputs", "rows"] } },
+        { "if": { "properties": { "type": { "const": "allowed_values" } } },
+          "then": { "required": ["allowed"] } },
+        { "if": { "properties": { "type": { "const": "forbidden_values" } } },
+          "then": { "required": ["forbidden"] } },
+        { "if": { "required": ["status"], "properties": { "status": { "const": "removed" } } },
+          "then": { "required": ["removed_in"] } }
+      ]
+    }
+  }
+}

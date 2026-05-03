@@ -1,0 +1,7 @@
+policy_id: POL-IAM-TEST
+rules:
+  - id: R1
+    statement: "Names must match pattern."
+    type: pattern
+    severity: required
+    # pattern field missing — should fail conditional schema
