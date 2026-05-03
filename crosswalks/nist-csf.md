@@ -39,7 +39,7 @@ by hand; they will be overwritten.
 | DE.DP-04 | Event detection information is communicated | _(no policy)_ |
 | DE.DP-05 | Detection processes are continuously improved | _(no policy)_ |
 | GV.OC | Organizational Context | _(no policy)_ |
-| GV.OC-01 | The organizational mission is understood and informs cybersecurity risk management | _(no policy)_ |
+| GV.OC-01 | The organizational mission is understood and informs cybersecurity risk management | POL-META-DOC-FRAMEWORK |
 | GV.OC-02 | Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered | _(no policy)_ |
 | GV.OC-03 | Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed | _(no policy)_ |
 | GV.OC-04 | Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated | _(no policy)_ |
@@ -49,7 +49,7 @@ by hand; they will be overwritten.
 | GV.OV-02 | The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks | _(no policy)_ |
 | GV.OV-03 | Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed | _(no policy)_ |
 | GV.PO | Policy | _(no policy)_ |
-| GV.PO-01 | Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced | _(no policy)_ |
+| GV.PO-01 | Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced | POL-META-AI-AGENT-CONTRACT, POL-META-DOC-FRAMEWORK |
 | GV.PO-02 | Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission | _(no policy)_ |
 | GV.RM | Risk Management Strategy | _(no policy)_ |
 | GV.RM-01 | Risk management objectives are established and agreed to by organizational stakeholders | _(no policy)_ |
@@ -60,7 +60,7 @@ by hand; they will be overwritten.
 | GV.RM-06 | A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated | _(no policy)_ |
 | GV.RM-07 | Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions | _(no policy)_ |
 | GV.RR | Roles, Responsibilities, and Authorities | _(no policy)_ |
-| GV.RR-01 | Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving | _(no policy)_ |
+| GV.RR-01 | Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving | POL-META-AI-AGENT-CONTRACT, POL-META-DOC-FRAMEWORK |
 | GV.RR-02 | Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced | _(no policy)_ |
 | GV.RR-03 | Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies | _(no policy)_ |
 | GV.RR-04 | Cybersecurity is included in human resources practices | _(no policy)_ |
@@ -137,7 +137,7 @@ by hand; they will be overwritten.
 | PR.AC-06 | Identities are proofed and bound to credentials and asserted in interactions | _(no policy)_ |
 | PR.AC-07 | Users, devices, and other assets are authenticated (e.g., single-factor, multi-factor) commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational risks) | _(no policy)_ |
 | PR.AT | Awareness and Training | _(no policy)_ |
-| PR.AT-01 | Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind | _(no policy)_ |
+| PR.AT-01 | Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind | POL-META-AI-AGENT-CONTRACT |
 | PR.AT-02 | Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind | _(no policy)_ |
 | PR.AT-03 | Third-party stakeholders (e.g., suppliers, customers, partners) understand their roles and responsibilities | _(no policy)_ |
 | PR.AT-04 | Senior executives understand their roles and responsibilities | _(no policy)_ |
@@ -263,7 +263,6 @@ by hand; they will be overwritten.
 - DE.DP-04 — Event detection information is communicated
 - DE.DP-05 — Detection processes are continuously improved
 - GV.OC — Organizational Context
-- GV.OC-01 — The organizational mission is understood and informs cybersecurity risk management
 - GV.OC-02 — Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered
 - GV.OC-03 — Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed
 - GV.OC-04 — Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated
@@ -273,7 +272,6 @@ by hand; they will be overwritten.
 - GV.OV-02 — The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks
 - GV.OV-03 — Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed
 - GV.PO — Policy
-- GV.PO-01 — Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced
 - GV.PO-02 — Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission
 - GV.RM — Risk Management Strategy
 - GV.RM-01 — Risk management objectives are established and agreed to by organizational stakeholders
@@ -284,7 +282,6 @@ by hand; they will be overwritten.
 - GV.RM-06 — A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated
 - GV.RM-07 — Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions
 - GV.RR — Roles, Responsibilities, and Authorities
-- GV.RR-01 — Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving
 - GV.RR-02 — Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced
 - GV.RR-03 — Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies
 - GV.RR-04 — Cybersecurity is included in human resources practices
@@ -361,7 +358,6 @@ by hand; they will be overwritten.
 - PR.AC-06 — Identities are proofed and bound to credentials and asserted in interactions
 - PR.AC-07 — Users, devices, and other assets are authenticated (e.g., single-factor, multi-factor) commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational risks)
 - PR.AT — Awareness and Training
-- PR.AT-01 — Personnel are provided with awareness and training so that they possess the knowledge and skills to perform general tasks with cybersecurity risks in mind
 - PR.AT-02 — Individuals in specialized roles are provided with awareness and training so that they possess the knowledge and skills to perform relevant tasks with cybersecurity risks in mind
 - PR.AT-03 — Third-party stakeholders (e.g., suppliers, customers, partners) understand their roles and responsibilities
 - PR.AT-04 — Senior executives understand their roles and responsibilities

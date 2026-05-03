@@ -1,0 +1,250 @@
+---
+id: POL-META-DOC-FRAMEWORK
+title: Policy Documentation Framework
+summary: >
+  Defines how GGI policies are authored, organized, validated, lifecycled, and
+  rendered. Every other policy in this repository is authored under the rules
+  this policy declares.
+domain: META
+status: effective
+version: 1.0.0
+effective_date: 2026-05-03
+last_reviewed: 2026-05-03
+review_cycle: annual
+owner: Policy Stewards
+approvers: [CISO, IT Director, Policy Stewards]
+applies_to:
+  - All policies in this repository
+  - All exceptions and crosswalk artifacts
+  - All AI agents and tooling that read or modify the repository
+supersedes: []
+related: [POL-META-AI-AGENT-CONTRACT]
+frameworks:
+  nist_csf:     [GV.OC-01, GV.PO-01, GV.RR-01]
+  cis:          []
+  soc2:         [CC1.3, CC2.1, CC2.2]
+  hipaa:        ["164.316(a)"]
+  nist_800_53:  [PL-1, PM-1]
+  nist_800_171: ["3.15.1", "3.15.2"]
+external_references:
+  - https://github.com/GGenomics/GGI-POLICY
+  - https://github.com/GGenomics/GGI-POLICY/blob/main/docs/superpowers/specs/2026-05-02-policy-doc-framework-design.md
+---
+
+## Purpose
+
+GGI maintains a unified body of policy covering data and application
+governance and cybersecurity. The framework defined here is the contract
+that every such policy is authored against — its file layout, frontmatter
+schema, sidecar rule structure, lifecycle states, review cadence, exception
+process, and rendering surface. Without a stable framework, policies drift
+into inconsistent shapes that humans cannot navigate and AI agents cannot
+parse.
+
+This policy *defines* the framework. The design specification at
+`docs/superpowers/specs/2026-05-02-policy-doc-framework-design.md` is the
+detailed engineering reference; this document is the normative declaration
+that an authored policy bound by this framework follows the rules below.
+
+## Scope
+
+In scope:
+
+- Every Markdown file under `policies/`, regardless of domain.
+- Every YAML file under `policies/**.rules.yaml` (sidecar rules).
+- Every Markdown file under `exceptions/`.
+- The schemas, glossary, crosswalks, and templates that support the
+  framework.
+- AI agents and tooling that read or modify the repository.
+
+Out of scope:
+
+- General employee-handbook content (PTO, benefits, dress code) — that
+  lives in the HRIS, not here.
+- Operational runbooks for individual systems — those live in their own
+  repositories with their own conventions.
+
+## Policy Statements
+
+**R1.** Every policy file lives at `policies/{domain-folder}/{slug}.md` where
+the domain folder corresponds to one of the 12 prefixes (IAM, DAT, PRV, APP,
+END, NET, IR, VND, SEC, BCP, HR, META) and the slug is the lowercased kebab
+form of the policy ID's slug component.
+
+**R2.** Every policy ID matches the pattern `^POL-[A-Z]+-[A-Z0-9-]+$` and is
+unique. IDs are forever; retired IDs are never reused.
+
+**R3.** Every policy has YAML frontmatter conforming to
+`schemas/policy-frontmatter.schema.json`. The runner enforces this on every
+PR.
+
+**R4.** Every policy body follows the nine-section skeleton: Purpose, Scope,
+Policy Statements, Rationale, Examples, Implementation Guidance, Exceptions,
+References, Revision History — in that order. Empty sections are explicit
+(`*Not applicable.*`) so absence is intentional.
+
+**R5.** Policies declaring rules carry a sidecar `policy.rules.yaml` whose
+content conforms to `schemas/policy-rules.schema.json`. Each rule has a
+stable sub-id (`R1`, `R2`, ...). Sub-id numbers are never reused; removed
+rules retain their number with `status: removed` and `removed_in: <version>`.
+
+**R6.** Every policy declares framework alignment via the `frameworks:`
+block. Each control ID cited must exist in the canonical
+`schemas/framework-controls.json` catalog.
+
+**R7.** Lifecycle states are exactly four: `draft`, `effective`,
+`superseded`, `retired`. A rule is enforceable IF AND ONLY IF the parent
+policy is `effective` AND its `effective_date <= today` AND no active
+exception cites the rule's full sub-id. Tooling exposes
+`is_enforceable(policy_id, rule_id) -> bool` and `evaluate(rule_id, candidate)`
+so consumers don't re-implement this logic.
+
+**R8.** Versioning is semantic. MAJOR breaks an existing rule, MINOR adds
+a rule or expands scope, PATCH is prose-only. MAJOR bumps require a
+future-dated `effective_date` for advance notice and a documented migration
+path in the Revision History section.
+
+**R9.** Approver enforcement is gated by CODEOWNERS. The `approvers:` list
+in frontmatter must be a subset of the GitHub teams owning the policy's
+path in `.github/CODEOWNERS`, mediated by `schemas/role-team-mapping.yaml`.
+A CI lint blocks merges that violate this invariant.
+
+**R10.** Exceptions follow the schema in `schemas/exception.schema.json` and
+the lifecycle in `exceptions/`. Exception duration is capped by the
+referenced rule's severity: `required` rules cap exceptions at 6 months,
+`recommended` rules at 18 months. CI enforces the cap.
+
+**R11.** Crosswalks at `crosswalks/{framework}.md` are auto-generated by
+`uv run ggi-policy build-crosswalks` and are kept in sync with policy
+frontmatter on every PR via `build-crosswalks --check`. Editing the marked
+regions by hand is a CI failure.
+
+**R12.** The catalog `schemas/framework-controls.json` is refreshed by
+`uv run ggi-policy fetch-controls`. The framework supports six frameworks
+today (NIST CSF 2.0, CIS Controls v8, SOC 2 TSC, HIPAA 45 CFR Part 164,
+NIST 800-53 Rev 5, NIST 800-171 Rev 3). Adding a seventh requires only a
+new fetcher module and a registry entry.
+
+## Rationale
+
+The design considered three alternatives:
+
+1. **Domain folders only** with no framework crosswalks — rejected because
+   audit and customer questionnaires need framework views.
+2. **Framework-organized folders** (e.g., one folder per NIST CSF function)
+   — rejected because the operational reading order is by domain, not by
+   framework.
+3. **Hybrid: domain folders plus auto-generated crosswalks** — chosen.
+   Domain folders match how authors and readers think; crosswalks satisfy
+   audit needs as a derived view that never goes stale because CI enforces
+   regeneration.
+
+Stable IDs (R2) are a non-negotiable contract for AI agents and audits;
+without them, citations rot whenever a file moves. The nine-section skeleton
+(R4) lets agents predict where to find specific information without parsing
+the entire body. CODEOWNERS-mediated approvers (R9) reuse GitHub's existing
+review enforcement rather than building a parallel approval system.
+
+The framework is intended to be lightweight — heavyweight compliance machinery
+(formal change control, RFC processes) is deliberately out of scope. If a
+future audit demands those, they can be layered on without restructuring.
+
+## Examples
+
+**Compliant policy file structure:**
+
+```
+policies/identity-and-access/group-naming.md
+policies/identity-and-access/group-naming.rules.yaml
+```
+
+**Compliant frontmatter (excerpt):**
+
+```yaml
+---
+id: POL-IAM-GROUP-NAMING
+title: Entra Group Naming Conventions
+domain: IAM
+status: effective
+version: 1.0.0
+review_cycle: annual
+approvers: [CISO, IT Director]
+frameworks:
+  nist_csf: [PR.AC-01, PR.AC-03]
+---
+```
+
+**Non-compliant counter-examples** (each fails the validator):
+
+```yaml
+# Missing 'id' — violates R3 (frontmatter schema)
+---
+title: Group Naming
+domain: IAM
+---
+
+# Wrong folder — violates R1 (id says IAM, file lives under data/)
+policies/data/group-naming.md  ->  id: POL-IAM-GROUP-NAMING
+
+# Cites a control that isn't in the catalog — violates R6
+frameworks:
+  nist_csf: [PR.AC-99]   # PR.AC-99 doesn't exist
+```
+
+## Implementation Guidance
+
+**Authoring a new policy:**
+
+1. Copy `templates/policy.md` and `templates/policy.rules.yaml` to the
+   appropriate `policies/{domain}/` directory; rename to match the slug.
+2. Fill in frontmatter; verify the `id` matches the filename slug and the
+   domain matches the folder.
+3. Write the body following the nine-section skeleton.
+4. If the policy has machine-checkable rules, populate the sidecar
+   `.rules.yaml`.
+5. Run `uv run pytest`, `uv run ggi-policy validate`, and
+   `uv run ggi-policy build-crosswalks` locally before opening a PR.
+6. The PR template will prompt for change type, version-bump rationale,
+   and (if MAJOR) a communication plan.
+
+**Authoring a new exception:**
+
+1. Copy `templates/exception.md` to `exceptions/EXC-{YYYY}-{NNN}-{slug}.md`.
+2. Set `policy_ref` to the full sub-id (e.g., `POL-IAM-GROUP-NAMING.R1`).
+3. Set `expires` no later than the cap allowed by the referenced rule's
+   severity (6 months for `required`, 18 for `recommended`).
+4. Document the compensating control and risk acceptance.
+
+**Refreshing the framework catalog:**
+
+```bash
+uv run ggi-policy fetch-controls
+uv run ggi-policy build-crosswalks
+```
+
+CI's `build-crosswalks --check` step ensures regenerated crosswalks are
+committed alongside the catalog change.
+
+## Exceptions
+
+See `exceptions/` for active exceptions referencing this policy. To request
+an exception, file a PR adding `exceptions/EXC-{YYYY}-{NNN}-{slug}.md`.
+
+## References
+
+- Design specification:
+  `docs/superpowers/specs/2026-05-02-policy-doc-framework-design.md`
+- Implementation plans (Phases 1–6):
+  `docs/superpowers/plans/2026-05-02-phase-{1..6}-*.md`
+- AI-agent contract (companion meta-policy): POL-META-AI-AGENT-CONTRACT
+- Schemas: `schemas/policy-frontmatter.schema.json`,
+  `schemas/policy-rules.schema.json`, `schemas/exception.schema.json`,
+  `schemas/framework-controls.schema.json`
+- Templates: `templates/policy.md`, `templates/policy.rules.yaml`,
+  `templates/exception.md`
+
+## Revision History
+
+- **1.0.0 (2026-05-03)** — Initial release. Framework brought up across
+  Phases 1–6: schemas + tooling + crosswalks + site rendering + k8s
+  deployment + lifecycle automation + meta-policies.

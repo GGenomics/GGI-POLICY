@@ -1,0 +1,101 @@
+policy_id: POL-META-DOC-FRAMEWORK
+rules:
+  - id: R1
+    statement: Policy files live at policies/{domain-folder}/{slug}.md.
+    type: pattern
+    severity: required
+    applies_to:
+      object_type: policy_file
+    pattern: "^policies/(identity-and-access|data|privacy|applications|endpoints|network|incident-response|vendor-and-third-party|security-operations|business-continuity|human-resources|meta)/[a-z0-9-]+\\.md$"
+
+  - id: R2
+    statement: Policy IDs match POL-{DOMAIN}-{SLUG}; uniqueness enforced; never reused.
+    type: pattern
+    severity: required
+    applies_to:
+      object_type: policy_id
+    pattern: "^POL-[A-Z]+-[A-Z0-9-]+$"
+
+  - id: R3
+    statement: Frontmatter validates against schemas/policy-frontmatter.schema.json.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: policy_frontmatter
+    expected: { schema_valid: true }
+
+  - id: R4
+    statement: Body follows the nine-section skeleton.
+    type: allowed_values
+    severity: required
+    applies_to:
+      object_type: body_section_order
+    allowed:
+      - ["Purpose", "Scope", "Policy Statements", "Rationale", "Examples",
+         "Implementation Guidance", "Exceptions", "References", "Revision History"]
+
+  - id: R5
+    statement: Sidecar rules conform to schemas/policy-rules.schema.json; sub-IDs unique and never reused.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: rules_sidecar
+    expected: { schema_valid: true, ids_unique: true, removed_numbers_not_reused: true }
+
+  - id: R6
+    statement: Framework tags resolve against schemas/framework-controls.json.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: framework_tag
+    expected: { in_catalog: true }
+
+  - id: R7
+    statement: A rule is enforceable IFF parent policy.status == effective AND effective_date <= today AND no active exception cites the rule.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: rule_evaluation
+    expected: { uses_is_enforceable_helper: true }
+
+  - id: R8
+    statement: Versioning is semver; MAJOR bumps require future-dated effective_date and a migration path in Revision History.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: version_change
+    expected: { semver: true, major_has_advance_notice: true }
+
+  - id: R9
+    statement: approvers list is a subset of CODEOWNERS for the policy's path, mediated by role-team-mapping.yaml.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: policy_approvers
+    expected: { in_codeowners: true }
+
+  - id: R10
+    statement: Exception duration capped at 6 months for required rules, 18 months for recommended rules.
+    type: setting
+    severity: required
+    applies_to:
+      object_type: exception_duration
+    value:
+      required:    { max_days: 186 }   # 6 * 31
+      recommended: { max_days: 558 }   # 18 * 31
+
+  - id: R11
+    statement: Crosswalks are auto-generated; manual edits to marker regions fail CI.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: crosswalk_file
+    expected: { build_crosswalks_check_passes: true }
+
+  - id: R12
+    statement: Catalog refresh via `ggi-policy fetch-controls`; six frameworks today, pluggable via per-framework fetcher modules.
+    type: flag
+    severity: recommended
+    applies_to:
+      object_type: catalog_refresh
+    expected: { refreshed_at_least_quarterly: true }

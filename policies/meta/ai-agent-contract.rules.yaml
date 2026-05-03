@@ -1,0 +1,53 @@
+policy_id: POL-META-AI-AGENT-CONTRACT
+rules:
+  - id: R1
+    statement: Agents read the eight authoritative entry points in the prescribed order.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: agent_bootstrap
+    expected: { reads_claude_md_first: true, reads_schemas_before_policies: true }
+
+  - id: R2
+    statement: A rule is enforceable IFF status==effective AND effective_date<=today AND no active exception cites the rule.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: rule_evaluation
+    expected: { uses_is_enforceable_helper: true }
+
+  - id: R3
+    statement: Findings cite in the [POL-{DOMAIN}-{SLUG}.R{N}] square-bracketed format.
+    type: pattern
+    severity: required
+    applies_to:
+      object_type: agent_finding_citation
+    pattern: "\\[POL-[A-Z]+-[A-Z0-9-]+\\.R\\d+\\]"
+
+  - id: R4
+    statement: Agents support five behaviors — Q&A, validation, generation, audit, authoring assistance.
+    type: allowed_values
+    severity: recommended
+    applies_to:
+      object_type: agent_behavior
+    allowed: ["qa", "validation", "generation", "audit", "authoring_assistance"]
+
+  - id: R5
+    statement: Agents never fabricate rule IDs or framework tags; never enforce drafts; never elide active exceptions; never edit policies/schemas/exceptions/crosswalks outside PRs.
+    type: forbidden_values
+    severity: required
+    applies_to:
+      object_type: agent_action
+    forbidden:
+      - "fabricated_citation"
+      - "enforced_non_effective_policy"
+      - "elided_active_exception"
+      - "direct_repo_write_outside_pr"
+
+  - id: R6
+    statement: Agents that cannot bootstrap (read CLAUDE.md and schemas) refuse to operate rather than partially comply.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: agent_bootstrap_failure
+    expected: { fail_closed: true }
