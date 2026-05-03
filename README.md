@@ -1,6 +1,6 @@
 # GGI Policy
 
-Canonical home for GGenomics company policies covering data and application
+Canonical home for General Genomics company policies covering data and application
 governance and cybersecurity. Every policy in this repo is authored against
 the framework defined by [POL-META-DOC-FRAMEWORK](policies/meta/doc-framework.md);
 AI agents follow [POL-META-AI-AGENT-CONTRACT](policies/meta/ai-agent-contract.md);
@@ -112,4 +112,4 @@ enabling the config will recreate the symlinks.
 
 ## License
 
-Internal GGenomics resource. Contact the CISO for access or use questions.
+Internal General Genomics, Inc. resource. Contact the CISO for access or use questions.

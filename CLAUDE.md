@@ -5,10 +5,10 @@ For full detail see [POL-META-AI-AGENT-CONTRACT](policies/meta/ai-agent-contract
 
 ## What this repo is
 
-A policy library for GGenomics covering data and application governance and
-cybersecurity. Every policy is authored against the framework defined by
-[POL-META-DOC-FRAMEWORK](policies/meta/doc-framework.md). Agents that read,
-cite, validate, or generate against this library follow the AI-agent contract.
+A policy library for General Genomics, Inc. (GGI / ggenomics.com / ggenomics.internal)
+covering data and application governance and cybersecurity. Every policy is authored 
+against the framework defined by [POL-META-DOC-FRAMEWORK](policies/meta/doc-framework.md). 
+Agents that read, cite, validate, or generate against this library follow the AI-agent contract.
 
 ## Authoritative read order
 
