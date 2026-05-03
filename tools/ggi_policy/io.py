@@ -1,9 +1,22 @@
+import datetime as dt
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator
 
 import frontmatter
 import yaml
+
+
+def _stringify_dates(value):
+    if isinstance(value, dt.datetime):
+        return value.isoformat()
+    if isinstance(value, dt.date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {k: _stringify_dates(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_stringify_dates(v) for v in value]
+    return value
 
 
 @dataclass(frozen=True)
@@ -22,7 +35,7 @@ class LoadedException:
 
 def load_policy(path: Path) -> LoadedPolicy:
     post = frontmatter.load(path)
-    return LoadedPolicy(path=path, metadata=dict(post.metadata), body=post.content)
+    return LoadedPolicy(path=path, metadata=_stringify_dates(dict(post.metadata)), body=post.content)
 
 
 def load_rules(policy_path: Path) -> dict | None:
@@ -37,7 +50,7 @@ def load_rules(policy_path: Path) -> dict | None:
 
 def load_exception(path: Path) -> LoadedException:
     post = frontmatter.load(path)
-    return LoadedException(path=path, metadata=dict(post.metadata), body=post.content)
+    return LoadedException(path=path, metadata=_stringify_dates(dict(post.metadata)), body=post.content)
 
 
 def iter_policies(root: Path) -> Iterator[LoadedPolicy]:
