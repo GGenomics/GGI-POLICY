@@ -92,3 +92,34 @@ def test_fetch_controls_writes_catalog(fixtures_dir: Path, tmp_path: Path, monke
     }
     assert any(c["id"] == "PR.AC-01" for c in payload["frameworks"]["nist_csf"]["controls"])
     assert any(c["id"] == "5.4" for c in payload["frameworks"]["cis"]["controls"])
+
+
+def test_build_site_invokes_mkdocs(monkeypatch, tmp_path: Path) -> None:
+    """The build-site subcommand calls site.build with the right args; it does
+    not actually invoke mkdocs in tests (we monkeypatch site.build)."""
+    from ggi_policy import site
+
+    captured = {}
+
+    def fake_build(repo_root, *, strict):
+        captured["repo_root"] = repo_root
+        captured["strict"] = strict
+        return 0
+
+    monkeypatch.setattr(site, "build", fake_build)
+    runner = CliRunner()
+    result = runner.invoke(main, ["build-site", "--repo-root", str(tmp_path)])
+    assert result.exit_code == 0, result.output
+    assert "OK" in result.output
+    assert captured["repo_root"] == tmp_path.resolve()
+    assert captured["strict"] is True
+
+
+def test_build_site_propagates_failure(monkeypatch, tmp_path: Path) -> None:
+    from ggi_policy import site
+
+    monkeypatch.setattr(site, "build", lambda repo_root, *, strict: 1)
+    runner = CliRunner()
+    result = runner.invoke(main, ["build-site", "--repo-root", str(tmp_path)])
+    assert result.exit_code == 1
+    assert "FAIL" in result.output

@@ -129,5 +129,23 @@ def build_crosswalks(check_mode: bool, repo_root_opt: Path | None) -> None:
         click.echo("no changes")
 
 
+@main.command("build-site")
+@click.option("--no-strict", is_flag=True, default=False,
+              help="Disable --strict (build will not fail on broken links).")
+@click.option("--repo-root", "repo_root_opt",
+              type=click.Path(exists=True, file_okay=False, path_type=Path),
+              default=None)
+def build_site(no_strict: bool, repo_root_opt: Path | None) -> None:
+    """Build the static MkDocs site into <repo>/site/."""
+    from ggi_policy import site
+
+    root = (repo_root_opt or repo_root()).resolve()
+    rc = site.build(root, strict=not no_strict)
+    if rc != 0:
+        click.echo(f"FAIL: mkdocs build exited {rc}", err=True)
+        sys.exit(rc)
+    click.echo(f"OK: site built at {root / 'site'}")
+
+
 if __name__ == "__main__":
     main()
