@@ -33,3 +33,10 @@ jobs:
 
       - name: Validate deployment manifests
         run: uv run ggi-policy validate-deploy
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
+      - name: kubectl kustomize (apps)
+        run: kubectl kustomize deploy/apps/policy-docs/ > /dev/null
+      - name: kubectl kustomize (flux)
+        run: kubectl kustomize deploy/flux/image-automation/ > /dev/null

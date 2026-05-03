@@ -1,0 +1,42 @@
+# Default-deny ingress; explicit allow from ingress-nginx.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: policy-docs
+  labels:
+    app.kubernetes.io/part-of: ggi-policy
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+# Allow ingress-nginx → policy-docs nginx + oauth2-proxy.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-nginx
+  namespace: policy-docs
+  labels:
+    app.kubernetes.io/part-of: ggi-policy
+spec:
+  podSelector:
+    matchExpressions:
+      - key: app.kubernetes.io/name
+        operator: In
+        values: [policy-docs, oauth2-proxy]
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              # TODO(operator): confirm the ingress-nginx namespace label.
+              # Most installations label `ingress-nginx` with
+              # `kubernetes.io/metadata.name: ingress-nginx`.
+              kubernetes.io/metadata.name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 8080   # policy-docs nginx
+        - protocol: TCP
+          port: 4180   # oauth2-proxy

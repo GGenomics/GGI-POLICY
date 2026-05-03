@@ -22,6 +22,13 @@ metadata:
     nginx.ingress.kubernetes.io/auth-snippet: |
       auth_request_set $auth_user $upstream_http_x_auth_request_user;
       auth_request_set $auth_email $upstream_http_x_auth_request_email;
+    # Defensive headers for the rendered site. frame-ancestors permits the
+    # GGenomics SharePoint and Teams hosts so the policy site can be
+    # iframe-embedded there; everywhere else is denied.
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Content-Type-Options: nosniff";
+      more_set_headers "Referrer-Policy: strict-origin-when-cross-origin";
+      more_set_headers "Content-Security-Policy: frame-ancestors 'self' https://*.sharepoint.com https://*.teams.microsoft.com https://teams.microsoft.com";
 spec:
   ingressClassName: nginx
   tls:

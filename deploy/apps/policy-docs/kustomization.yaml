@@ -18,6 +18,7 @@ resources:
   - oauth2-proxy.deployment.yaml
   - oauth2-proxy.service.yaml
   - ingress.yaml
+  - network-policy.yaml
 
 # Note: Deployment.spec.selector.matchLabels is immutable. Whatever labels
 # end up in the rendered selector after the labels: block above CANNOT be
