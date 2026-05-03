@@ -1,0 +1,169 @@
+policy_id: POL-IAM-GROUP-NAMING
+rules:
+  - id: R1
+    statement: >
+      Group type is chosen by collaboration / email / ACL / role-mailbox
+      criteria. The five permitted types are security_group,
+      mail_enabled_security_group, distribution_group, m365_group, and
+      shared_mailbox.
+    type: decision_table
+    severity: required
+    applies_to:
+      object_type: entra_group_request
+    inputs:
+      - is_role_mailbox
+      - needs_files_and_chat
+      - needs_email_distribution
+      - needs_resource_acl
+    rows:
+      - { is_role_mailbox: true,  needs_files_and_chat: any,   needs_email_distribution: any,   needs_resource_acl: any,   type: shared_mailbox }
+      - { is_role_mailbox: false, needs_files_and_chat: true,  needs_email_distribution: any,   needs_resource_acl: any,   type: m365_group }
+      - { is_role_mailbox: false, needs_files_and_chat: false, needs_email_distribution: true,  needs_resource_acl: true,  type: mail_enabled_security_group }
+      - { is_role_mailbox: false, needs_files_and_chat: false, needs_email_distribution: true,  needs_resource_acl: false, type: distribution_group }
+      - { is_role_mailbox: false, needs_files_and_chat: false, needs_email_distribution: false, needs_resource_acl: true,  type: security_group }
+    examples:
+      compliant:
+        - { inputs: { is_role_mailbox: false, needs_files_and_chat: false, needs_email_distribution: false, needs_resource_acl: true }, chosen_type: security_group }
+        - { inputs: { is_role_mailbox: true,  needs_files_and_chat: false, needs_email_distribution: false, needs_resource_acl: false }, chosen_type: shared_mailbox }
+      non_compliant:
+        - { inputs: { is_role_mailbox: false, needs_files_and_chat: false, needs_email_distribution: true,  needs_resource_acl: false }, chosen_type: m365_group, reason: "files+chat not needed; should be distribution_group" }
+        - { inputs: { is_role_mailbox: false, needs_files_and_chat: false, needs_email_distribution: false, needs_resource_acl: true  }, chosen_type: distribution_group, reason: "DL cannot grant ACL; should be security_group" }
+
+  - id: R2
+    statement: >
+      Group display names and aliases match the type-specific slug pattern:
+      sg-<scope>-<env>-<purpose>, msg-<purpose>, dl-<purpose>,
+      m365-<purpose>, sm-<purpose>. Scope ∈ {az,m365,app,file,infra};
+      env ∈ {prod,nonprod,all}; purpose is kebab-case ASCII.
+    type: pattern
+    severity: required
+    applies_to:
+      object_type: entra_group_name
+    pattern: "^(sg-(az|m365|app|file|infra)-(prod|nonprod|all)-[a-z0-9]+(-[a-z0-9]+)*|(msg|dl|m365|sm)-[a-z0-9]+(-[a-z0-9]+)*)$"
+    examples:
+      compliant:
+        - sg-az-prod-finance-readers
+        - sg-m365-all-license-eligible
+        - msg-secure-billing
+        - dl-all-engineering
+        - m365-platform-team
+        - sm-support
+      non_compliant:
+        - { value: "Marketing-2024", reason: "missing type prefix" }
+        - { value: "sg-prod-finance", reason: "missing scope facet" }
+        - { value: "sg-az-finance-readers", reason: "missing env facet" }
+        - { value: "SG-az-prod-finance", reason: "uppercase letters not allowed" }
+        - { value: "m365-az-prod-finance-readers", reason: "wrong type prefix for an RBAC-granting group" }
+
+  - id: R3
+    statement: >
+      Group names do not contain banned terms (placeholder/scratch markers
+      or personal-name identities).
+    type: forbidden_values
+    severity: required
+    applies_to:
+      object_type: entra_group_name_token
+    forbidden:
+      - temp
+      - test
+      - tmp
+      - foo
+      - bar
+      - asdf
+      - new
+      - copy
+      - copy-of
+      - untitled
+      - scratch
+      - todo
+      - xxx
+    examples:
+      compliant:
+        - sg-az-prod-finance-readers
+        - dl-all-engineering
+      non_compliant:
+        - { value: "dl-temp-marketing", reason: "contains 'temp'" }
+        - { value: "sg-app-prod-test-runners", reason: "contains 'test'" }
+        - { value: "m365-untitled-project", reason: "contains 'untitled'" }
+
+  - id: R4
+    statement: >
+      Every group has at least two assigned owners who are licensed user
+      accounts (not service principals, service accounts, or shared
+      mailboxes). One primary, one backup.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: entra_group_owners
+    expected:
+      min_licensed_user_owners: 2
+      service_principal_owners_allowed: false
+      service_account_owners_allowed: false
+      shared_mailbox_owners_allowed: false
+    examples:
+      compliant:
+        - { group: sg-az-prod-finance-readers, owners: [alice@ggenomics.com, bob@ggenomics.com] }
+      non_compliant:
+        - { group: sg-az-prod-finance-readers, owners: [alice@ggenomics.com], reason: "only one owner" }
+        - { group: sg-az-prod-finance-readers, owners: [alice@ggenomics.com, "svc-finance-sync"], reason: "service account is not a licensed user" }
+
+  - id: R5
+    statement: >
+      Groups granting any privileged Entra role (Global Administrator,
+      Privileged Role Administrator, Conditional Access Administrator,
+      Security Administrator, User Administrator) or any Azure RBAC
+      Owner / Contributor / User Access Administrator role at
+      subscription or management-group scope are PIM-eligible only.
+      Direct (non-PIM) assignment is forbidden.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: entra_group_role_assignment
+    expected:
+      pim_required_for_privileged_roles: true
+      permanent_assignment_to_privileged_role: false
+    examples:
+      compliant:
+        - { group: sg-az-all-global-admins, role: "Global Administrator", assignment: PIM-eligible }
+      non_compliant:
+        - { group: sg-az-all-global-admins, role: "Global Administrator", assignment: permanent, reason: "must be PIM-eligible" }
+
+  - id: R6
+    statement: >
+      Every group declares its lifecycle classification at creation:
+      production, project, or temporary. Temporary groups carry an
+      expires:YYYY-MM-DD marker in the description and are reviewed
+      monthly by their owner.
+    type: allowed_values
+    severity: required
+    applies_to:
+      object_type: entra_group_lifecycle_classification
+    allowed:
+      - production
+      - project
+      - temporary
+    examples:
+      compliant:
+        - { group: sg-az-prod-finance-readers, classification: production }
+        - { group: sg-app-nonprod-spike-2026, classification: temporary, description: "expires:2026-09-30 — Q3 spike" }
+      non_compliant:
+        - { group: sg-az-prod-finance-readers, classification: indefinite, reason: "not in allowed values" }
+
+  - id: R7
+    statement: >
+      Groups with no members for 90 days, or with no licensed-user
+      owner for 90 days, are archived: removed from role assignments,
+      renamed with prefix zz-archived-, and deleted 90 days later.
+    type: flag
+    severity: recommended
+    applies_to:
+      object_type: entra_group_lifecycle_state
+    expected:
+      member_idle_archive_days: 90
+      owner_orphan_archive_days: 90
+      post_archive_deletion_days: 90
+    examples:
+      compliant:
+        - { group: zz-archived-sg-app-prod-old-pipeline, archived_on: 2026-04-15, deletion_due: 2026-07-14 }
+      non_compliant:
+        - { group: sg-app-prod-old-pipeline, members: 0, days_since_last_member: 240, reason: "should have been archived 150 days ago" }

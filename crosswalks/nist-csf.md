@@ -63,7 +63,7 @@ by hand; they will be overwritten.
 | GV.RR-01 | Organizational leadership is responsible and accountable for cybersecurity risk and fosters a culture that is risk-aware, ethical, and continually improving | POL-META-AI-AGENT-CONTRACT, POL-META-DOC-FRAMEWORK |
 | GV.RR-02 | Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced | _(no policy)_ |
 | GV.RR-03 | Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies | _(no policy)_ |
-| GV.RR-04 | Cybersecurity is included in human resources practices | _(no policy)_ |
+| GV.RR-04 | Cybersecurity is included in human resources practices | POL-IAM-GROUP-NAMING |
 | GV.SC | Cybersecurity Supply Chain Risk Management | _(no policy)_ |
 | GV.SC-01 | A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders | _(no policy)_ |
 | GV.SC-02 | Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally | _(no policy)_ |
@@ -122,11 +122,11 @@ by hand; they will be overwritten.
 | ID.SC-04 | Suppliers and third-party partners are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual obligations. | _(no policy)_ |
 | ID.SC-05 | Response and recovery planning and testing are conducted with suppliers and third-party providers | _(no policy)_ |
 | PR.AA | Identity Management, Authentication, and Access Control | _(no policy)_ |
-| PR.AA-01 | Identities and credentials for authorized users, services, and hardware are managed by the organization | _(no policy)_ |
+| PR.AA-01 | Identities and credentials for authorized users, services, and hardware are managed by the organization | POL-IAM-GROUP-NAMING |
 | PR.AA-02 | Identities are proofed and bound to credentials based on the context of interactions | _(no policy)_ |
-| PR.AA-03 | Users, services, and hardware are authenticated | _(no policy)_ |
+| PR.AA-03 | Users, services, and hardware are authenticated | POL-IAM-GROUP-NAMING |
 | PR.AA-04 | Identity assertions are protected, conveyed, and verified | _(no policy)_ |
-| PR.AA-05 | Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties | _(no policy)_ |
+| PR.AA-05 | Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties | POL-IAM-GROUP-NAMING |
 | PR.AA-06 | Physical access to assets is managed, monitored, and enforced commensurate with risk | _(no policy)_ |
 | PR.AC | Identity Management, Authentication and Access Control | _(no policy)_ |
 | PR.AC-01 | Identities and credentials are issued, managed, verified, revoked, and audited for authorized devices, users and processes | _(no policy)_ |
@@ -284,7 +284,6 @@ by hand; they will be overwritten.
 - GV.RR — Roles, Responsibilities, and Authorities
 - GV.RR-02 — Roles, responsibilities, and authorities related to cybersecurity risk management are established, communicated, understood, and enforced
 - GV.RR-03 — Adequate resources are allocated commensurate with the cybersecurity risk strategy, roles, responsibilities, and policies
-- GV.RR-04 — Cybersecurity is included in human resources practices
 - GV.SC — Cybersecurity Supply Chain Risk Management
 - GV.SC-01 — A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders
 - GV.SC-02 — Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally
@@ -343,11 +342,8 @@ by hand; they will be overwritten.
 - ID.SC-04 — Suppliers and third-party partners are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual obligations.
 - ID.SC-05 — Response and recovery planning and testing are conducted with suppliers and third-party providers
 - PR.AA — Identity Management, Authentication, and Access Control
-- PR.AA-01 — Identities and credentials for authorized users, services, and hardware are managed by the organization
 - PR.AA-02 — Identities are proofed and bound to credentials based on the context of interactions
-- PR.AA-03 — Users, services, and hardware are authenticated
 - PR.AA-04 — Identity assertions are protected, conveyed, and verified
-- PR.AA-05 — Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed, and incorporate the principles of least privilege and separation of duties
 - PR.AA-06 — Physical access to assets is managed, monitored, and enforced commensurate with risk
 - PR.AC — Identity Management, Authentication and Access Control
 - PR.AC-01 — Identities and credentials are issued, managed, verified, revoked, and audited for authorized devices, users and processes
