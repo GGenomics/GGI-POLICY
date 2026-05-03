@@ -1,0 +1,65 @@
+{
+  "catalog": {
+    "uuid": "csf-2.0-test-fixture",
+    "metadata": {
+      "title": "NIST Cybersecurity Framework",
+      "version": "2.0",
+      "oscal-version": "1.1.2"
+    },
+    "groups": [
+      {
+        "id": "GV",
+        "class": "csf-function",
+        "title": "Govern",
+        "groups": [
+          {
+            "id": "GV.OC",
+            "class": "csf-category",
+            "title": "Organizational Context",
+            "controls": [
+              {
+                "id": "GV.OC-01",
+                "class": "csf-subcategory",
+                "title": "The organizational mission is understood and informs cybersecurity risk management"
+              },
+              {
+                "id": "GV.OC-02",
+                "class": "csf-subcategory",
+                "title": "Internal and external stakeholders are understood, and their needs and expectations are understood"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PR",
+        "class": "csf-function",
+        "title": "Protect",
+        "groups": [
+          {
+            "id": "PR.AC",
+            "class": "csf-category",
+            "title": "Access Control",
+            "controls": [
+              {
+                "id": "PR.AC-01",
+                "class": "csf-subcategory",
+                "title": "Identities and credentials are issued, managed, verified, revoked, and audited"
+              },
+              {
+                "id": "PR.AC-03",
+                "class": "csf-subcategory",
+                "title": "Remote access is managed"
+              },
+              {
+                "id": "PR.AC-04",
+                "class": "csf-subcategory",
+                "title": "Access permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
