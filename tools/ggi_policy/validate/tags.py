@@ -4,6 +4,10 @@ from ggi_policy.io import LoadedPolicy
 from ggi_policy.result import ValidationFinding, ValidationReport
 
 
+# NOTE: These patterns are intentionally duplicated from
+# schemas/policy-frontmatter.schema.json (the public contract for AI agents).
+# If you change a pattern here, update the schema too, and vice versa.
+# Consolidation into a single source of truth is deferred to Phase 2.
 PATTERNS = {
     "nist_csf":     re.compile(r"^(GV|ID|PR|DE|RS|RC)\.[A-Z]{2}-\d+$"),
     "cis":          re.compile(r"^\d+(\.\d+)?$"),
