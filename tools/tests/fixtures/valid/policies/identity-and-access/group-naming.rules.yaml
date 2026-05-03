@@ -1,0 +1,31 @@
+policy_id: POL-IAM-GROUP-NAMING
+rules:
+  - id: R1
+    statement: Security group names must match the prescribed pattern.
+    type: pattern
+    severity: required
+    applies_to:
+      object_type: entra_security_group
+    pattern: "^sg-(az|m365|ad)-[a-z0-9]+-[a-z0-9-]+$"
+    examples:
+      compliant: [sg-az-prod-finance-readers]
+      non_compliant:
+        - { value: "Marketing-Team-2024", reason: "Missing sg- prefix" }
+  - id: R2
+    statement: Group type must be chosen via the decision table below.
+    type: decision_table
+    severity: required
+    inputs: [needs_email, needs_files, needs_chat, dist_only]
+    rows:
+      - { needs_email: true,  needs_files: true,  needs_chat: true,  result: m365_group }
+      - { needs_email: true,  needs_files: false, needs_chat: false, dist_only: true, result: distribution_group }
+      - { needs_email: false, needs_files: false, needs_chat: false, result: security_group }
+  - id: R3
+    statement: Privileged-access groups require PIM-eligible assignment.
+    type: flag
+    severity: required
+    applies_to:
+      object_type: entra_security_group
+      where:
+        name_matches: "^sg-az-prod-.*-(admin|owner|contributor)$"
+    expected: { pim_eligible_only: true }
