@@ -35,7 +35,11 @@ spec:
         - name: nginx
           # Image tag is rewritten by Flux ImageUpdateAutomation. Anything that
           # matches the ImagePolicy in deploy/flux/image-automation/ is valid.
-          image: ghcr.io/ggenomics/ggi-policy-site:main-1 # {"$imagepolicy": "policy-docs:policy-docs-image"}
+          # Initial value is `latest` (always present in GHCR after Phase 3's first
+          # build) so the very first reconcile pulls a known-good image. Flux's
+          # ImageUpdateAutomation then rewrites this line to the highest main-{N}
+          # tag on its next 5-minute interval.
+          image: ghcr.io/ggenomics/ggi-policy-site:latest # {"$imagepolicy": "policy-docs:policy-docs-image"}
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

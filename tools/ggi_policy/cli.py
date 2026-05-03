@@ -147,5 +147,23 @@ def build_site(no_strict: bool, repo_root_opt: Path | None) -> None:
     click.echo(f"OK: site built at {root / 'site'}")
 
 
+@main.command("validate-deploy")
+@click.option("--repo-root", "repo_root_opt",
+              type=click.Path(exists=True, file_okay=False, path_type=Path),
+              default=None)
+def validate_deploy(repo_root_opt: Path | None) -> None:
+    """Structurally validate the deploy/ kustomize tree."""
+    from ggi_policy import manifests
+
+    root = (repo_root_opt or repo_root()).resolve()
+    errors = manifests.validate(root / "deploy")
+    if errors:
+        for e in errors:
+            click.echo(e, err=True)
+        click.echo(f"\nFAIL: {len(errors)} manifest issue(s)", err=True)
+        sys.exit(1)
+    click.echo(f"OK: deploy/ manifests valid ({root / 'deploy'})")
+
+
 if __name__ == "__main__":
     main()
