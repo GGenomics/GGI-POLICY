@@ -8,7 +8,7 @@ from ggi_policy.fetchers._models import Control, FrameworkData, Metadata
 from ggi_policy.fetchers._oscal import parse_catalog
 
 
-SOURCE_URL = "https://raw.githubusercontent.com/usnistgov/OSCAL/main/src/specifications/json/oscal-catalog-csf-2-0.json"
+SOURCE_URL = "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/CSF/v2.0/json/NIST_CSF_v2.0_catalog.json"
 
 
 def fetch_from_text(text: str, *, fetched_at: date) -> FrameworkData:

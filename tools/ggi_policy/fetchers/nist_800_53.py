@@ -14,7 +14,7 @@ from ggi_policy.fetchers._models import Control, FrameworkData, Metadata
 from ggi_policy.fetchers._oscal import parse_catalog
 
 
-SOURCE_URL = "https://raw.githubusercontent.com/usnistgov/OSCAL/main/src/specifications/json/oscal-catalog-sp800-53-rev5.json"
+SOURCE_URL = "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"
 
 _BASE_RE = re.compile(r"^([a-z]{2})-(\d+)$")
 _ENH_RE  = re.compile(r"^([a-z]{2})-(\d+)\.(\d+)$")

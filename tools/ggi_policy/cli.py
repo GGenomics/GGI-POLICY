@@ -42,5 +42,64 @@ def validate(repo_root_opt: Path | None) -> None:
     sys.exit(1)
 
 
+@main.command("fetch-controls")
+@click.option("--framework", "framework_filter", default=None,
+              help="Refresh only the named framework (default: all).")
+@click.option("--output", "output_opt", type=click.Path(path_type=Path), default=None,
+              help="Write to this path (default: <repo>/schemas/framework-controls.json).")
+def fetch_controls(framework_filter: str | None, output_opt: Path | None) -> None:
+    """Fetch the latest framework control catalogs and write framework-controls.json."""
+    from datetime import date
+
+    from ggi_policy import controls
+    from ggi_policy.fetchers import REGISTRY
+
+    today = date.today()
+    target_path = output_opt or (repo_root() / "schemas" / "framework-controls.json")
+
+    if target_path.exists():
+        existing = controls.load(target_path)
+    else:
+        existing = {"frameworks": {}}
+
+    selected = ([framework_filter] if framework_filter else list(REGISTRY.keys()))
+    out_per_framework = {}
+
+    # Preserve frameworks we aren't refreshing this run.
+    for name, raw in existing.get("frameworks", {}).items():
+        if name not in selected:
+            out_per_framework[name] = _frameworkdata_from_dict(name, raw)
+
+    for name in selected:
+        if name not in REGISTRY:
+            raise click.ClickException(f"unknown framework: {name!r}")
+        click.echo(f"fetching {name}...", err=True)
+        out_per_framework[name] = REGISTRY[name].fetch(fetched_at=today)
+
+    controls.save(out_per_framework, target_path)
+    click.echo(f"wrote {len(out_per_framework)} framework(s) to {target_path}")
+
+
+def _frameworkdata_from_dict(name: str, raw: dict):
+    """Rehydrate a FrameworkData from the on-disk JSON shape (used to preserve frameworks
+    we aren't refreshing this run)."""
+    from datetime import date as _date
+
+    from ggi_policy.fetchers._models import Control, FrameworkData, Metadata
+
+    md = raw.get("metadata", {})
+    return FrameworkData(
+        metadata=Metadata(
+            version=md.get("version", ""),
+            fetched_at=_date.fromisoformat(md.get("fetched_at", _date.today().isoformat())),
+            source_url=md.get("source_url", ""),
+            fetcher=md.get("fetcher", name),
+            notes=md.get("notes", ""),
+        ),
+        controls=[Control(id=c["id"], title=c["title"], description=c.get("description", ""))
+                  for c in raw.get("controls", [])],
+    )
+
+
 if __name__ == "__main__":
     main()
