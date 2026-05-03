@@ -22,7 +22,9 @@ def main() -> None:
 )
 def validate(repo_root_opt: Path | None) -> None:
     """Validate every policy, sidecar, and exception in the repo."""
-    root = repo_root_opt or repo_root()
+    # Resolve to an absolute path so relative_to() in finding output behaves
+    # predictably regardless of where the CLI was invoked from.
+    root = (repo_root_opt or repo_root()).resolve()
     report = run(repo_root=root, config_root=root)
     if report.ok:
         click.echo(f"OK: validated {root}")

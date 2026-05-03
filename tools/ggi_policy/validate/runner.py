@@ -1,19 +1,12 @@
 from pathlib import Path
 
 from ggi_policy import codeowners, io, role_team_map
+from ggi_policy.domains import DOMAIN_TO_FOLDER
 from ggi_policy.result import ValidationReport
 from ggi_policy.validate import (
     approvers, consistency, exceptions as exc_validate, frontmatter as fm,
     removed_rules, rules_sidecar, tags,
 )
-
-DOMAIN_TO_FOLDER = {
-    "IAM": "identity-and-access", "DAT": "data", "PRV": "privacy",
-    "APP": "applications", "END": "endpoints", "NET": "network",
-    "IR":  "incident-response", "VND": "vendor-and-third-party",
-    "SEC": "security-operations", "BCP": "business-continuity",
-    "HR":  "human-resources", "META": "meta",
-}
 
 
 def run(repo_root: Path, config_root: Path | None = None) -> ValidationReport:
