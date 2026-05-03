@@ -3,9 +3,11 @@ kind: Kustomization
 
 namespace: policy-docs
 
-commonLabels:
-  app.kubernetes.io/part-of: ggi-policy
-  app.kubernetes.io/managed-by: flux
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/part-of: ggi-policy
+      app.kubernetes.io/managed-by: flux
 
 resources:
   - namespace.yaml
