@@ -30,3 +30,15 @@ jobs:
 
       - name: Check crosswalks are up to date
         run: uv run ggi-policy build-crosswalks --check
+
+      - name: Validate deployment manifests
+        run: |
+          uv run python -c "
+          from pathlib import Path
+          from ggi_policy import manifests
+          errors = manifests.validate(Path('deploy'))
+          if errors:
+              for e in errors: print(e)
+              raise SystemExit(1)
+          print('OK: deploy/ manifests valid')
+          "
