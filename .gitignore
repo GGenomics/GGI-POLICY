@@ -13,7 +13,7 @@ build/
 .python-version
 
 # Site build (Phase 3)
-site/
+/site/
 
 # IDE
 .idea/
