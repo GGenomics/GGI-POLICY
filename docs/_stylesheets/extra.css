@@ -1,0 +1,2 @@
+/* GGI Policy site overrides. Filled in over later phases. */
+.md-typeset table:not([class]) { font-size: 0.85rem; }

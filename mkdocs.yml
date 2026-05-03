@@ -1,0 +1,52 @@
+site_name: GGI Policy
+site_description: GGenomics policy library — data and application governance, cybersecurity.
+site_url: https://policy.internal.ggenomics.com/
+repo_url: https://github.com/GGenomics/GGI-POLICY
+edit_uri: edit/main/
+
+docs_dir: docs
+
+# Everything in this list is excluded from the rendered site.
+# Use gitignore-style patterns (relative to docs_dir).
+exclude_docs: |
+  superpowers/
+  _hooks/
+  _stylesheets/
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+
+plugins:
+  - search
+  - awesome-pages
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
+extra_css:
+  - _stylesheets/extra.css
+
+hooks:
+  - docs/_hooks/policy_page.py
